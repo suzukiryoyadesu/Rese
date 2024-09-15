@@ -1,0 +1,16 @@
+body {
+    background-color: #eeeeee;
+}
+
+.header__inner {
+    height: 8vh;
+    padding-left: 3vw;
+    display: flex;
+    align-items: center;
+}
+
+.header__inner h1 {
+    margin: 0;
+    font-size: 2vw;
+    color: #3560F6;
+}

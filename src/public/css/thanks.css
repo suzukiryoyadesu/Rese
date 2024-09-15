@@ -1,0 +1,48 @@
+body {
+    background-color: #eeeeee;
+}
+
+.header__inner {
+    height: 8vh;
+    padding-left: 3vw;
+    display: flex;
+    align-items: center;
+}
+
+.header__inner h1 {
+    margin: 0;
+    font-size: 2vw;
+    color: #3560F6;
+}
+
+.thanks__content {
+    width: 25vw;
+    margin: 20vh auto 0;
+    padding: 10vh 0;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 3px #a2a2a2;
+}
+
+.thanks__message {
+    margin: 0;
+    text-align: center;
+    font-size: 1vw;
+    font-weight: bold;
+}
+
+.thanks__link {
+    margin: 4vh 0 0;
+    text-align: center;
+}
+
+.thanks__button {
+    height: 3vh;
+    padding: 0 5%;
+    border: none;
+    border-radius: 5px;
+    background: #3560F6;
+    color: #ffffff;
+    font-size: 0.7vw;
+    cursor: pointer;
+}
