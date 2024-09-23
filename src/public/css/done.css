@@ -3,6 +3,8 @@ body {
 }
 
 .header__inner {
+    margin: 0;
+    padding: 0;
     height: 8vh;
     padding-left: 3vw;
     display: flex;
@@ -100,9 +102,6 @@ body {
     justify-content: center;
 }
 
-
-
-/* メニュー黒ポチを消す */
 .hamburger__nav-list {
     list-style: none;
     text-align: center;
@@ -128,83 +127,36 @@ body {
 
 .header__inner h1 {
     margin: 0;
-    font-size: 2vw;
+    font-size: 36px;
     color: #3560F6;
 }
-
-.register__content {
+.done__content {
     width: 25vw;
     margin: 20vh auto 0;
+    padding: 10vh 0;
     border-radius: 5px;
     background-color: #ffffff;
     box-shadow: 5px 5px 3px #a2a2a2;
 }
 
-.register-form__heading {
-    height: 7vh;
-    padding-left: 5%;
-    border-radius: 5px 5px 0 0;
-    display: flex;
-    align-items: center;
-    background-color: #3560F6;
-}
-
-.register-form__heading h2 {
+.done__message {
     margin: 0;
-    font-weight: normal;
+    text-align: center;
     font-size: 1vw;
-    color: #ffffff;
+    font-weight: bold;
 }
 
-.form {
-    width: 80%;
-    margin: 0 auto;
+.done__link {
+    margin: 4vh 0 0;
+    text-align: center;
 }
 
-.form__input {
-    width: 100%;
-    margin-top: 4vh;
-    display: flex;
-    justify-content: space-between;
-}
-
-.form__input i {
-    width: 10%;
-    position: relative;
-}
-
-.form__input i::before {
-    position: absolute;
-    bottom: 50%;
-}
-
-.form__input input {
-    width: 80%;
-    height: 3vh;
-    border: none;
-    border-bottom: 1.5px solid #202020;
-    outline: none;
-    appearance: none;
-    font-size: 1vw;
-}
-
-.form__error {
-    color: #ff0000;
-    font-size: 1vw;
-}
-
-.form__button {
-    text-align: right;
-}
-
-.form__button-submit {
-    height: 3vh;
-    margin: 4vh 0 2vh;
-    padding: 0 5%;
+.done__button {
+    padding: 0.5vh 1vw;
     border: none;
     border-radius: 5px;
     background: #3560F6;
     color: #ffffff;
-    font-size: 1vw;
+    font-size: 0.8vw;
     cursor: pointer;
 }

@@ -3,14 +3,263 @@ body {
 }
 
 .header__inner {
+    margin: 0;
+    padding: 0 0 0 30px;
     height: 8vh;
-    padding-left: 3vw;
     display: flex;
     align-items: center;
 }
 
+/* チェックボックスを非表示にする */
+.hamburger__input {
+    display: none;
+}
+
+/* ハンバーガーアイコンの設置スペース */
+.hamburger__open {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    margin-right: 1vw;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+    /* 重なり順を一番上にする */
+    cursor: pointer;
+    background-color: #3560F6;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0.5px #a2a2a2;
+}
+
+/* ハンバーガーメニューのアイコン */
+.hamburger__open span:before {
+    bottom: 8px;
+    content: '';
+    display: block;
+    height: 1px;
+    width: 12.5px;
+    background: #ffffff;
+    transition: 0.5s;
+    position: absolute;
+}
+
+.hamburger__open span {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 25px;
+    background: #ffffff;
+    transition: 0.5s;
+    position: absolute;
+}
+
+.hamburger__open span:after {
+    top: 8px;
+    content: '';
+    display: block;
+    height: 1px;
+    width: 6.25px;
+    background: #ffffff;
+    transition: 0.5s;
+    position: absolute;
+}
+
+/* アイコンがクリックされたら真ん中の線を透明にする */
+.hamburger__input:checked~.hamburger__open span {
+    background: rgba(255, 255, 255, 0);
+}
+
+/* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
+.hamburger__input:checked~.hamburger__open span::before {
+    bottom: 0;
+    width: 25px;
+    transform: rotate(45deg);
+}
+
+.hamburger__input:checked~.hamburger__open span::after {
+    top: 0;
+    width: 25px;
+    transform: rotate(-45deg);
+}
+
+/* メニューのデザイン*/
+.hamburger__nav {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* メニューを画面の外に飛ばす */
+    z-index: 99;
+    background: #fff;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger__nav-list {
+    list-style: none;
+    text-align: center;
+}
+
+.hamburger__nav-link {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    appearance: none;
+    text-decoration: none;
+    color: #3560F6;
+    font-size: 2vw;
+    cursor: pointer;
+}
+
+/* アイコンがクリックされたらメニューを表示 */
+.hamburger__input:checked~.hamburger__nav {
+    /* メニューを画面に入れる */
+    pointer-events: auto;
+    opacity: 1;
+}
+
 .header__inner h1 {
     margin: 0;
-    font-size: 2vw;
+    font-size: 36px;
     color: #3560F6;
+}
+
+.restaurant__search-form {
+    position: relative;
+}
+
+.search-form__item {
+    width: 499px;
+    display: flex;
+    position: absolute;
+    right: 40px;
+    bottom: 15px;
+}
+
+.search-form__select-left {
+    width: 100px;
+    height: 40px;
+    margin: 0;
+    padding: 3px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 5px 0 0 5px;
+    box-shadow: 2px 2px 0.5px #a2a2a2;
+    background-color: #ffffff;
+}
+
+.search-form__select-middle {
+    width: 100px;
+    height: 40px;
+    margin: 0;
+    padding: 3px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 0.5px #a2a2a2;
+    background-color: #ffffff;
+}
+
+.search-form__item i {
+    position: relative;
+}
+
+.search-form__item i::before {
+    position: absolute;
+    left: -4px;
+    bottom: 50%;
+    transform: translate(50%, 50%);
+}
+
+.search-form__input-right {
+    width: 300px;
+    height: 40px;
+    margin: 0;
+    padding: 3px 3px 3px 30px;
+    font-size: 12px;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 0 5px 5px 0 ;
+    box-shadow: 2px 2px 0.5px #a2a2a2;
+    background-color: #ffffff;
+}
+
+.restaurant__content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.restaurant__card {
+    width: 300px;
+    margin: 30px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 3px #a2a2a2;
+}
+
+.restaurant__img {
+    width: 100%;
+}
+
+.restaurant__img img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.restaurant__text {
+    padding: 20px;
+}
+
+.restaurant__text h2 {
+    margin: 5px 0 5px;
+}
+
+.restaurant__tag {
+    margin: 5px 0 5px;
+}
+
+.restaurant__option {
+    margin: 5px 0 5px;
+    display:flex;
+    justify-content: space-between;
+}
+
+.restaurant__option-link button {
+    padding: 5px 10px 5px;
+    border: none;
+    border-radius: 5px;
+    background: #3560F6;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.favorite__form-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    appearance: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.favorite__form-button i {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.favorite__form-button i::before {
+    position: absolute;
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%, 50%);
 }

@@ -15,6 +15,21 @@
 <body>
     <header>
         <div class="header__inner">
+            <!-- ハンバーガーメニュー部分 -->
+            <div class="hamburger">
+                <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
+                <input class="hamburger__input" id="hamburger__input" type="checkbox">
+                <!-- ハンバーガーアイコン -->
+                <label for="hamburger__input" class="hamburger__open"><span></span></label>
+                <!-- メニュー -->
+                <nav class="hamburger__nav">
+                    <ul class="hamburger__nav-list">
+                        <li class="hamburger__nav-item"><a href="/" class="hamburger__nav-link">Home</a></li>
+                        <li class="hamburger__nav-item"><a href="/register" class="hamburger__nav-link">Registration</a></li>
+                        <li class="hamburger__nav-item"><a href="/login" class="hamburger__nav-link">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
             <h1>Rese</h1>
         </div>
     </header>
@@ -27,8 +42,8 @@
             <form class="form" action="/register" method="post">
                 @csrf
                 <div class="form__group">
-                    <div class="form__input--text">
-                        <i class="fa-solid fa-envelope"></i>
+                    <div class="form__input">
+                        <i class="fa-solid fa-user fa-xl" style="color: #4b4b4b;"></i>
                         <input type="text" name="name" value="{{ old('name') }}" placeholder="Username" />
                     </div>
                     <div class="form__error">
@@ -38,7 +53,8 @@
                     </div>
                 </div>
                 <div class="form__group">
-                    <div class="form__input--text">
+                    <div class="form__input">
+                        <i class="fa-solid fa-envelope fa-xl" style="color: #4b4b4b;"></i>
                         <input type="text" name="email" value="{{ old('email') }}" placeholder="Email" />
                     </div>
                     <div class="form__error">
@@ -48,7 +64,8 @@
                     </div>
                 </div>
                 <div class="form__group">
-                    <div class="form__input--text">
+                    <div class="form__input">
+                        <i class="fa-solid fa-lock fa-xl" style="color: #4b4b4b;"></i>
                         <input type="password" name="password" placeholder="Password" />
                     </div>
                     <div class="form__error">
