@@ -62,7 +62,7 @@ class ShopController extends Controller
         $reservation_array = $request->only(['restaurant_id', 'date', 'time', 'number']);
         $reservation_array['user_id'] = Auth::id();
         Reservation::create($reservation_array);
-        return view('done');
+        return view('done', compact('reservation_array'));
     }
     //予約
 
