@@ -30,7 +30,7 @@
                                 <button class="hamburger__nav-link">Logout</button>
                             </form>
                         </li>
-                        <li class="hamburger__nav-item"><a href="" class="hamburger__nav-link">Mypage</a></li>
+                        <li class="hamburger__nav-item"><a href="/mypage" class="hamburger__nav-link">Mypage</a></li>
                         @else
                         <li class="hamburger__nav-item"><a href="/register" class="hamburger__nav-link">Registration</a></li>
                         <li class="hamburger__nav-item"><a href="/login" class="hamburger__nav-link">Login</a></li>

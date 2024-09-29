@@ -7,7 +7,11 @@
 @section('content')
 <div class="detail__content">
     <div class="restaurant__content">
-        <a class="restaurant__back-link" href="/search"><button>&lt;</button></a>
+        @if($page_status == "mypage")
+        <a class="restaurant__back-link" href="/mypage"><button>&lt;</button></a>
+        @else
+        <a class="restaurant__back-link" href="/search/?access_time={{ $access_time }}"><button>&lt;</button></a>
+        @endif
         <h2>{{ $restaurant->name }}</h2>
         <div class="restaurant__img">
             @switch($restaurant->genre_id)
@@ -44,6 +48,8 @@
             @csrf
             <div class="reservation__form-input">
                 <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}" />
+                <input type="hidden" name="access_time" value="{{ $access_time }}" />
+                <input type="hidden" name="page_status" value="{{ $page_status }}" />
                 <input type="date" name="date" value="{{ \Carbon\Carbon::now()->format("Y-m-d") }}" />
                 <br />
                 <select name="time">
@@ -70,7 +76,7 @@
                         <th class="confirmation__header">Date</th>
                         <td class="confirmation__description" id="input_date"></td>
                     </tr>
-                    <tr class="confirmation__row">
+                    <tr class="c">
                         <th class="confirmation__header">Time</th>
                         <td class="confirmation__description" id="input_time"></td>
                     </tr>

@@ -85,15 +85,18 @@
 .reservation__confirmation {
     width: 30vw;
     margin: 0 30px 0;
+    padding: 15px;
     background-color: #5580f7;
     border-radius: 5px;
 }
 
 .confirmation__table {
-    margin: 0 15px;
-    padding: 30px 0;
     color: #ffffff;
     text-align: left;
+}
+
+.confirmation__row {
+    height: 30px;
 }
 
 .confirmation__header {

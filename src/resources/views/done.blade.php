@@ -10,7 +10,7 @@
         <p>ご予約ありがとうございます</p>
     </div>
     <div class="done__link">
-        <a href="/detail/?restaurant_id={{ $reservation_array['restaurant_id'] }}">
+        <a href="/detail/?restaurant_id={{ $reservation_array['restaurant_id'] }}&access_time={{ $access_time }}&page_status={{ $page_status }}">
             <button class="done__button">戻る</button>
         </a>
     </div>

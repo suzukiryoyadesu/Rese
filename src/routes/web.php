@@ -16,9 +16,11 @@ use App\Http\Controllers\ShopController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/thanks', [ShopController::class, 'thanks']);
+        Route::get('/mypage', [ShopController::class, 'mypage']);
         Route::post('/favorite/add', [ShopController::class, 'addFavorite']);
         Route::post('/favorite/delete', [ShopController::class, 'deleteFavorite']);
         Route::post('/reservation', [ShopController::class, 'reservation']);
+        Route::post('/reservation/delete', [ShopController::class, 'deleteReservation']);
     }
 );
 
