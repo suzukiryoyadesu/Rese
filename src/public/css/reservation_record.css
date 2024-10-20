@@ -1,0 +1,273 @@
+.reservation__content {
+    margin: 0 0 0 30px;
+}
+
+.date__form {
+    position: relative;
+    background: #ffffff;
+    width: 250px;
+    height: 35px;
+    margin: 30px 0;
+    border: 1.5px solid #cccccc;
+    border-radius: 15px;
+}
+
+.date__form-input {
+    width: 100%;
+    height: 100%;
+    padding: 0 15px 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.date__form-label {
+    position: absolute;
+    top: 3px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+    opacity: 1;
+    font-weight: bold;
+}
+
+.reservation__day {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.reservation__card {
+    position: relative;
+    width: 300px;
+    height: 250px;
+    margin: 0 30px 30px 0;
+    padding: 15px 0;
+    color: #ffffff;
+    background-color: #3560F6;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0.5px #a2a2a2;
+}
+
+.reservation__delete-button {
+    position: absolute;
+    right: 15px;
+    top: 30px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    appearance: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.reservation__delete-button i {
+    width: 100%;
+    height: 100%;
+}
+
+.reservation__delete-button i::before {
+    transform: translate(-50%, -50%);
+}
+
+.reservation__card > i {
+    position: absolute;
+    left: 15px;
+    top: 30px;
+    width: 20px;
+    height: 20px;
+}
+
+.reservation__card > i::before {
+    position: absolute;
+    left: 0;
+    top: 50%;
+}
+
+.reservation__card h3 {
+    font-weight: normal;
+    margin: 15px 0;
+    padding: 0 0 0 60px;
+}
+
+.reservation__table {
+    margin: 0 15px;
+    text-align: left;
+}
+
+.reservation__row {
+    height: 30px;
+}
+
+.reservation__header {
+    width: 90px;
+    font-weight: normal;
+}
+
+.reservation__description {
+    width: 120px;
+}
+
+.reservation-change__link-button {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 90px;
+    height: 30px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    color: #3560F6;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.reservation-history__ttl {
+    width: 400px;
+    margin: 30px 0 30px 30px;
+}
+
+.reservation-history__content {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 30px;
+}
+
+.review__link-button {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 90px;
+    height: 30px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    color: #3560F6;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.favorite__ttl {
+    height: 50px;
+    margin: 0;
+    position: absolute;
+    top: 80px;
+    left: 430px;
+}
+
+.favorite__content {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 160px;
+    left: 430px;
+}
+
+.restaurant__card {
+    width: 300px;
+    height: 350px;
+    margin: 0 30px 30px 0;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 3px #a2a2a2;
+}
+
+.restaurant__img {
+    width: 100%;
+}
+
+.restaurant__img img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.restaurant__text {
+    padding: 20px;
+}
+
+.restaurant__text h4 {
+    margin: 5px 0 5px;
+}
+
+.restaurant__tag {
+    margin: 5px 0 5px;
+}
+
+.restaurant__option {
+    margin: 5px 0 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.restaurant__option-link button {
+    padding: 5px 10px 5px;
+    border: none;
+    border-radius: 5px;
+    background: #3560F6;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.favorite__form-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    appearance: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.favorite__form-button i {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.favorite__form-button i::before {
+    position: absolute;
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%, 50%);
+}
+
+.restaurant_review {
+    align-items: center;
+    display: flex;
+    height: 24px;
+    margin: 5px 0 5px 0;
+}
+
+.restaurant_review-evaluation {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.restaurant_review-input {
+    display: none;
+}
+
+.restaurant_review-label {
+    color: #cccccc;
+    font-size: 15px;
+    padding: 0 3px;
+}
+
+.restaurant_review-input:checked~.restaurant_review-label {
+    color: #feb908;
+}
+
+.restaurant_review-item {
+    height: 24px;
+    margin: 5px 0 5px 5px;
+}

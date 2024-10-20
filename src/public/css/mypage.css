@@ -1,30 +1,29 @@
 .mypage__content {
-    display: grid;
-    grid-template-rows: 80px 50px 1fr;
-    grid-template-columns: 30px 400px 1fr;
+    position: relative;
 }
 
 .mypage__content h2 {
-    grid-column: 3/4;
-    grid-row: 1/2;
+    padding: 0 0 0 430px;
+    margin: 30px 0;
+    height: 50px;
 }
 
 .reservation__ttl {
-    margin: 0;
-    grid-column: 2/3;
-    grid-row: 2/3;
+    width: 400px;
+    height: 50px;
+    margin: 0 0 30px 30px;
 }
 
 .reservation__content {
-    grid-column: 2/3;
-    grid-row: 3/4;
     display: flex;
     flex-direction: column;
+    margin: 0 0 0 30px;
 }
 
 .reservation__card {
     position: relative;
     width: 300px;
+    height: 250px;
     margin: 0 0 30px 0;
     padding: 15px 0;
     color: #ffffff;
@@ -33,7 +32,7 @@
     box-shadow: 2px 2px 0.5px #a2a2a2;
 }
 
-.reservation__form-button {
+.reservation__delete-button {
     position: absolute;
     right: 15px;
     top: 30px;
@@ -48,12 +47,12 @@
     cursor: pointer;
 }
 
-.reservation__form-button i {
+.reservation__delete-button i {
     width: 100%;
     height: 100%;
 }
 
-.reservation__form-button i::before {
+.reservation__delete-button i::before {
     transform: translate(-50%, -50%);
 }
 
@@ -91,17 +90,63 @@
     font-weight: normal;
 }
 
+.reservation__description {
+    width: 120px;
+}
+
+.reservation-change__link-button {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 90px;
+    height: 30px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    color: #3560F6;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.reservation-history__ttl {
+    width: 400px;
+    margin: 30px 0 30px 30px;
+}
+
+.reservation-history__content {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 30px;
+}
+
+.review__link-button {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 90px;
+    height: 30px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    color: #3560F6;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .favorite__ttl {
+    height: 50px;
     margin: 0;
-    grid-column: 3/4;
-    grid-row: 2/3;
+    position: absolute;
+    top: 80px;
+    left: 430px;
 }
 
 .favorite__content {
-    grid-column: 3/4;
-    grid-row: 3/4;
     display: flex;
     flex-wrap: wrap;
+    position: absolute;
+    top: 160px;
+    left: 430px;
 }
 
 .restaurant__card {
@@ -169,4 +214,38 @@
     right: 50%;
     bottom: 50%;
     transform: translate(50%, 50%);
+}
+
+.restaurant_review {
+    align-items: center;
+    display: flex;
+    height: 24px;
+    margin: 5px 0 5px 0;
+}
+
+.restaurant_review-evaluation {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.restaurant_review-input {
+    display: none;
+}
+
+.restaurant_review-label {
+    color: #cccccc;
+    font-size: 15px;
+    padding: 0 3px;
+}
+
+.restaurant_review-input:checked~.restaurant_review-label {
+    color: #feb908;
+}
+
+.restaurant_review-item {
+    height: 24px;
+    margin: 5px 0 5px 5px;
 }

@@ -2,6 +2,7 @@
     position: relative;
     margin: 30px 0 0 0;
     padding: 0 0 0 30px;
+    min-height: 580px;
 }
 
 .restaurant__content {
@@ -47,9 +48,9 @@
 .reservation__content {
     position: absolute;
     right: 30px;
-    bottom: 0;
+    top: 0;
     width: 40vw;
-    height: calc(100% + 60px);
+    height: 550px;
     background-color: #3560F6;
     border: none;
     border-radius: 5px;
@@ -109,6 +110,11 @@
     color: #ffffff;
 }
 
+.reservation__error-message {
+    margin: 0 30px 0;
+    color: #ff7777;
+}
+
 .reservation__form button {
     position: absolute;
     right: 0;
@@ -121,4 +127,52 @@
     color: #ffffff;
     font-size: 16px;
     cursor: pointer;
+}
+
+.review__content {
+    margin: 30px 0 0 0;
+}
+
+.review__content h2 {
+    margin: 0 0 15px 0;
+    font-size: 25px;
+}
+
+.restaurant__review {
+    width: 40vw;
+    border-bottom: 1px solid #cccccc;
+    margin: 0 0 15px 0;
+}
+
+.restaurant__review h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.restaurant__review-evaluation {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.restaurant__review-input {
+    display: none;
+}
+
+.restaurant__review-label {
+    color: #cccccc;
+    font-size: 12px;
+    padding: 0 3px;
+}
+
+.restaurant__review-input:checked~.restaurant__review-label {
+    color: #feb908;
+}
+
+.restaurant__review p {
+    margin: 0;
+    padding: 0 3px;
+    font-size: 13px;
 }

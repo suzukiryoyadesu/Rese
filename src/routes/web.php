@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ShopController;
+use App\Http\Controllers\RestaurantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +14,38 @@ use App\Http\Controllers\ShopController;
 |
 */
 
-Route::middleware(['auth', 'verified'])->group(function () {
-        Route::get('/thanks', [ShopController::class, 'thanks']);
-        Route::get('/mypage', [ShopController::class, 'mypage']);
-        Route::post('/favorite/add', [ShopController::class, 'addFavorite']);
-        Route::post('/favorite/delete', [ShopController::class, 'deleteFavorite']);
-        Route::post('/reservation', [ShopController::class, 'reservation']);
-        Route::post('/reservation/delete', [ShopController::class, 'deleteReservation']);
+Route::middleware('auth')->group(function () {
+        Route::get('/thanks', [RestaurantController::class, 'thanks']);
+        Route::get('/no-permission', [RestaurantController::class, 'noPermission']);
+        Route::get('/mypage', [RestaurantController::class, 'mypage']);
+        Route::get('/reservation/change', [RestaurantController::class, 'changeReservationView']);
+        Route::get('/review', [RestaurantController::class, 'review']);
+        Route::post('/favorite/add', [RestaurantController::class, 'addFavorite']);
+        Route::post('/favorite/delete', [RestaurantController::class, 'deleteFavorite']);
+        Route::post('/reservation', [RestaurantController::class, 'reservation']);
+        Route::delete('/reservation/delete', [RestaurantController::class, 'deleteReservation']);
+        Route::patch('/reservation/change', [RestaurantController::class, 'changeReservation']);
+        Route::post('/review/post', [RestaurantController::class, 'reviewPost']);
+        Route::middleware('permission:representative')->group(function () {
+                Route::get('/representative/register', [RestaurantController::class, 'representativeRegisterView']);
+                Route::post('/representative/register', [RestaurantController::class, 'representativeRegister']);
+            }
+        );
+        Route::middleware('permission:restaurant')->group(function () {
+                Route::get('/restaurant/create', [RestaurantController::class, 'restaurantCreateView']);
+                Route::post('/restaurant/create', [RestaurantController::class, 'restaurantCreate']);
+                Route::get('/restaurant/edit', [RestaurantController::class, 'restaurantEditView']);
+                Route::patch('/restaurant/edit', [RestaurantController::class, 'restaurantEdit']);
+            }
+        );
+        Route::middleware('permission:reservation')->group(
+            function () {
+                Route::get('/reservation/record', [RestaurantController::class, 'reservationRecord']);
+            }
+        );
     }
 );
 
-Route::get('/', [ShopController::class, 'index']);
-Route::get('/detail', [ShopController::class, 'detail']);
-Route::get('/search', [ShopController::class, 'search']);
+Route::get('/', [RestaurantController::class, 'index']);
+Route::get('/detail', [RestaurantController::class, 'detail']);
+Route::get('/search', [RestaurantController::class, 'search']);

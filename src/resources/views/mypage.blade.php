@@ -9,17 +9,21 @@
 <div class="mypage__content">
     <h2>{{ Auth::user()->name }}さん</h2>
     <h3 class="reservation__ttl">予約状況</h3>
+    <!-- 予約情報の表示 -->
     <div class="reservation__content">
         @foreach($reservations as $reservation)
         <div class="reservation__card">
-            <form class="reservation__form" action="/reservation/delete" method="post">
+            <!-- 予約削除フォーム -->
+            <form class="reservation__form-delete" action="/reservation/delete" method="post">
                 @csrf
+                @method('delete')
                 <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">
-                <button class="reservation__form-button"><i class="fa-regular fa-circle-xmark fa-xl" style="color: #ffffff;"></i></button>
+                <input type="hidden" name="page_status" value="{{ $page_status }}">
+                <button class="reservation__delete-button"><i class="fa-regular fa-circle-xmark fa-xl" style="color: #ffffff;"></i></button>
             </form>
             <i class="fa-regular fa-clock fa-xl" style="color: #ffffff;"></i>
-            <h4>予約{{ $loop->iteration	 }}</h4>
-            <table class="reservation__table">
+            <h4>予約{{ $loop->iteration	}}</h4>
+            <table class="reservation__table" id="reservation__table{{ $loop->iteration }}">
                 <tr class="reservation__row">
                     <th class="reservation__header">Shop</th>
                     <td class="reservation__description">{{ $reservation->restaurant->name }}</td>
@@ -37,36 +41,78 @@
                     <td class="reservation__description">{{ $reservation->number }}人</td>
                 </tr>
             </table>
+            <!-- 予約変更画面への遷移ボタン -->
+            <a class="reservation-change__link" href="/reservation/change/?reservation_id={{ $reservation->id }}&page_status={{ $page_status }}">
+                <button class="reservation-change__link-button">変更</button>
+            </a>
+        </div>
+        @endforeach
+    </div>
+    <h3 class="reservation-history__ttl">過去の予約履歴</h3>
+    <!-- 予約履歴の表示 -->
+    <div class="reservation-history__content">
+        @foreach($reservations_history as $reservation)
+        <div class="reservation__card">
+            <i class="fa-regular fa-clock fa-xl" style="color: #ffffff;"></i>
+            <h4>予約{{ $loop->iteration	}}</h4>
+            <table class="reservation__table" id="reservation__table{{ $loop->iteration }}">
+                <tr class="reservation__row">
+                    <th class="reservation__header">Shop</th>
+                    <td class="reservation__description">{{ $reservation->restaurant->name }}</td>
+                </tr>
+                <tr class="reservation__row">
+                    <th class="reservation__header">Date</th>
+                    <td class="reservation__description">{{ $reservation->date }}</td>
+                </tr>
+                <tr class="reservation__row">
+                    <th class="reservation__header">Time</th>
+                    <td class="reservation__description">{{ substr($reservation->time,0,5) }}</td>
+                </tr>
+                <tr class="reservation__row">
+                    <th class="reservation__header">Number</th>
+                    <td class="reservation__description">{{ $reservation->number }}人</td>
+                </tr>
+            </table>
+            <a class="review__link" href="/review/?restaurant_id={{ $reservation->restaurant->id }}">
+                <button class="review__link-button">レビュー</button>
+            </a>
         </div>
         @endforeach
     </div>
     <h3 class="favorite__ttl">お気に入り店舗</h3>
+    <!-- お気に入り飲食店の表示 -->
     <div class="favorite__content">
         @foreach($favorites as $favorite)
         <div class="restaurant__card">
             <div class="restaurant__img">
-                @switch($favorite->restaurant->genre_id)
-                @case(1)
-                <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" />
-                @break
-                @case(2)
-                <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/yakiniku.jpg" />
-                @break
-                @case(3)
-                <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/izakaya.jpg" />
-                @break
-                @case(4)
-                <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/italian.jpg" />
-                @break
-                @case(5)
-                <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/ramen.jpg" />
-                @break
-                @default
-                <img alt="no image" />
-                @endswitch
+                <img src="{{ asset($favorite->restaurant->image) }}" alt="no image" />
             </div>
             <div class="restaurant__text">
                 <h4>{{ $favorite->restaurant->name }}</h4>
+                @if($favorite->review_total == 0)
+                <p class="restaurant_review-item">レビューなし</p>
+                @else
+                <div class="restaurant_review">
+                    <div class="restaurant_review-evaluation">
+                        <input class="restaurant_review-input" id="star5" name="evaluation" type="radio" value="5" disabled="disabled" @if( $favorite->review_average>=4.5&&$favorite->review_average<=5 ) checked @endif>
+                            <label class="restaurant_review-label" for="star5"><i class="fa-solid fa-star"></i></label>
+
+                            <input class="restaurant_review-input" id="star4" name="evaluation" type="radio" value="4" disabled="disabled" @if( $favorite->review_average>=3.5&&$favorite->review_average < 4.5 ) checked @endif>
+                                <label class="restaurant_review-label" for="star4"><i class="fa-solid fa-star"></i></label>
+
+                                <input class="restaurant_review-input" id="star3" name="evaluation" type="radio" value="3" disabled="disabled" @if( $favorite->review_average>=2.5&&$favorite->review_average<3.5 ) checked @endif>
+                                    <label class="restaurant_review-label" for="star3"><i class="fa-solid fa-star"></i></label>
+
+                                    <input class="restaurant_review-input" id="star2" name="evaluation" type="radio" value="2" disabled="disabled" @if( $favorite->review_average>=1.5&&$favorite->review_average<2.5 ) checked @endif>
+                                        <label class="restaurant_review-label" for="star2"><i class="fa-solid fa-star"></i></label>
+
+                                        <input class="restaurant_review-input" id="star1" name="evaluation" type="radio" value="1" disabled="disabled" @if( $favorite->review_average>=1&&$favorite->review_average<1.5 ) checked @endif>
+                                            <label class="restaurant_review-label" for="star1"><i class="fa-solid fa-star"></i></label>
+                    </div>
+                    <span class="restaurant_review-item">{{ $favorite->review_average }}</span>
+                    <span class="restaurant_review-item">&lpar;{{ $favorite->review_total }}&rpar;</span>
+                </div>
+                @endif
                 <div class="restaurant__tag">
                     <span class="tag">#{{ $favorite->restaurant->area->name }}</span>
                     <span class="tag">#{{ $favorite->restaurant->genre->name }}</span>

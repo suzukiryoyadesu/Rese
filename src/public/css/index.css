@@ -131,3 +131,37 @@
     bottom: 50%;
     transform: translate(50%, 50%);
 }
+
+.restaurant__review {
+    align-items: center;
+    display: flex;
+    height: 24px;
+    margin: 5px 0 5px 0;
+}
+
+.restaurant__review-evaluation {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.restaurant__review-input {
+    display: none;
+}
+
+.restaurant__review-label {
+    color: #cccccc;
+    font-size: 15px;
+    padding: 0 3px;
+}
+
+.restaurant__review-input:checked~.restaurant__review-label {
+    color: #feb908;
+}
+
+.restaurant__review-item {
+    height: 24px;
+    margin: 5px 0 5px 5px;
+}

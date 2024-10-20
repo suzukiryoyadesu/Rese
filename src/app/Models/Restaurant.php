@@ -13,6 +13,7 @@ class Restaurant extends Model
         'area_id',
         'genre_id',
         'name',
+        'image',
         'detail',
     ];
 
@@ -56,5 +57,10 @@ class Restaurant extends Model
             $query->where('name', 'like', '%' . $keyword . '%')
                 ->orwhere('detail', 'like', '%' . $keyword . '%');
         }
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }

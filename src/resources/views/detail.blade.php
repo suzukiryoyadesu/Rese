@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+<script src="https://kit.fontawesome.com/0e19cc0cb9.js" crossorigin="anonymous"></script>
 @endsection
 
 @section('content')
@@ -14,25 +15,7 @@
         @endif
         <h2>{{ $restaurant->name }}</h2>
         <div class="restaurant__img">
-            @switch($restaurant->genre_id)
-            @case(1)
-            <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" />
-            @break
-            @case(2)
-            <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/yakiniku.jpg" />
-            @break
-            @case(3)
-            <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/izakaya.jpg" />
-            @break
-            @case(4)
-            <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/italian.jpg" />
-            @break
-            @case(5)
-            <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/ramen.jpg" />
-            @break
-            @default
-            <img alt="no image" />
-            @endswitch
+            <img src="{{ asset($restaurant->image) }}" alt="no image" />
         </div>
         <div class="restaurant__tag">
             <span class="tag">#{{ $restaurant->area->name }}</span>
@@ -76,7 +59,7 @@
                         <th class="confirmation__header">Date</th>
                         <td class="confirmation__description" id="input_date"></td>
                     </tr>
-                    <tr class="c">
+                    <tr class="confirmation__row">
                         <th class="confirmation__header">Time</th>
                         <td class="confirmation__description" id="input_time"></td>
                     </tr>
@@ -89,12 +72,43 @@
             @if (!Auth::check())
             <p class="reservation__message">※予約にはログインが必要です。</p>
             @endif
+            @if ($errors->any())
+            <p class="reservation__error-message">・{{$errors->first()}}</p>
+            @endif
             <button>予約する</button>
         </form>
     </div>
+    <div class="review__content">
+        <h2>レビュー</h2>
+        @foreach($reviews as $review)
+        <div class="restaurant__review">
+            <h3>{{ $review->user->name }}</h3>
+            <form class="restaurant__review-evaluation" onsubmit="return false">
+                @csrf
+                <input class="restaurant__review-input" id="star5" name="evaluation" type="radio" value="5" disabled="disabled" @if( $review->evaluation==5 ) checked @endif>
+                <label class="restaurant__review-label" for="star5"><i class="fa-solid fa-star"></i></label>
+
+                <input class="restaurant__review-input" id="star4" name="evaluation" type="radio" value="4" disabled="disabled" @if( $review->evaluation==4 ) checked @endif>
+                <label class="restaurant__review-label" for="star4"><i class="fa-solid fa-star"></i></label>
+
+                <input class="restaurant__review-input" id="star3" name="evaluation" type="radio" value="3" disabled="disabled" @if( $review->evaluation==3 ) checked @endif>
+                <label class="restaurant__review-label" for="star3"><i class="fa-solid fa-star"></i></label>
+
+                <input class="restaurant__review-input" id="star2" name="evaluation" type="radio" value="2" disabled="disabled" @if( $review->evaluation==2 ) checked @endif>
+                <label class="restaurant__review-label" for="star2"><i class="fa-solid fa-star"></i></label>
+
+                <input class="restaurant__review-input" id="star1" name="evaluation" type="radio" value="1" disabled="disabled" @if( $review->evaluation==1 ) checked @endif>
+                <label class="restaurant__review-label" for="star1"><i class="fa-solid fa-star"></i></label>
+                {{ $review->evaluation }}
+            </form>
+            <p>{{ $review->comment }}</p>
+        </div>
+        @endforeach
+    </div>
 </div>
+
 @endsection
 
 @section('js')
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/detail.js') }}"></script>
 @endsection

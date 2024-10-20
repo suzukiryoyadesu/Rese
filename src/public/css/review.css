@@ -1,0 +1,168 @@
+.review__content {
+    position: relative;
+    margin: 30px 0 0 0;
+    padding: 0 0 0 30px;
+    min-height: 580px;
+}
+
+.restaurant__content {
+    width: 40vw;
+}
+
+.restaurant__back-link button {
+    height: 30px;
+    width: 30px;
+    font-size: 25px;
+    cursor: pointer;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0.5px #a2a2a2;
+}
+
+.restaurant__content h2 {
+    display: inline;
+    font-size: 25px;
+    margin: 0 0 0 10px;
+}
+
+.restaurant__img {
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+
+.restaurant__img img {
+    width: 100%;
+}
+
+.restaurant__tag {
+    margin: 10px 0 0 0;
+    font-size: 14px;
+}
+
+.restaurant__text {
+    margin: 20px 0 0 0;
+    font-size: 14px;
+}
+
+.review__form {
+    position: absolute;
+    right: 30px;
+    top: 0;
+    width: 40vw;
+    height: 550px;
+    background-color: #3560F6;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0.5px #a2a2a2;
+}
+
+.review__form h2 {
+    color: #ffffff;
+    font-size: 25px;
+    margin: 30px;
+}
+
+.review__form-frame {
+    width: calc(100% - 60px);
+    margin: 0 30px 0;
+    background-color: #5580f7;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+.review__form-frame h3 {
+    padding: 15px;
+    margin: 0;
+    font-weight: normal;
+}
+
+.review-form__evaluating {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin: 0 0 15px 15px;
+}
+
+.review-form__evaluating-input {
+    display: none;
+}
+
+.review-form__evaluating-label {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 0 8px;
+    transition: color 0.3s;
+}
+
+.review-form__evaluating-label:hover,
+.review-form__evaluating-label:hover~.review-form__evaluating-label,
+.review-form__evaluating-input:checked~.review-form__evaluating-label {
+    /* 「~」でホバー時を動的に、チェック時にそれ以下の数字をもつスターの色も変化 */
+    color: #feb908;
+}
+
+.review__form-frame textarea {
+    field-sizing: content;
+    margin: 0 0 15px 15px;
+    padding: 10px;
+    width: calc(100% - 30px);
+    height: 60px;
+    border: none;
+    border-radius: 5px;
+}
+
+.review__error-message {
+    margin: 0 30px 0 30px;
+    font-size: 14px;
+    color: #ff7777;
+}
+
+.review-form__button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 40vw;
+    height: 5%;
+    background-color: #003ff5;
+    border: none;
+    border-radius: 0 0 5px 5px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.review-form__evaluating-input-display {
+    display: none;
+}
+
+.review-form__evaluating-label-display {
+    color: #cccccc;
+    font-size: 24px;
+    padding: 0 8px;
+}
+
+.review-form__evaluating-input-display:checked~.review-form__evaluating-label-display {
+    color: #feb908;
+}
+
+.review__form-frame p {
+    margin: 0;
+    padding: 0 15px 15px 15px;
+    width: 100%;
+}
+
+.review-form__button-display {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 40vw;
+    height: 5%;
+    background-color: #cccccc;
+    border: none;
+    border-radius: 0 0 5px 5px;
+    color: #ffffff;
+    font-size: 16px;
+}

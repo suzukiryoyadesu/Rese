@@ -31,6 +31,16 @@
                             </form>
                         </li>
                         <li class="hamburger__nav-item"><a href="/mypage" class="hamburger__nav-link">Mypage</a></li>
+                        @can('representative')
+                        <li class="hamburger__nav-item"><a href="/representative/register" class="hamburger__nav-link">Registration(Rep)</a></li>
+                        @endcan
+                        @can('restaurant')
+                        <li class="hamburger__nav-item"><a href="/restaurant/create" class="hamburger__nav-link">Create(Restaurant)</a></li>
+                        <li class="hamburger__nav-item"><a href="/restaurant/edit" class="hamburger__nav-link">Edit(Restaurant)</a></li>
+                        @endcan
+                        @can('reservation')
+                        <li class="hamburger__nav-item"><a href="/reservation/record" class="hamburger__nav-link">Reservation</a></li>
+                        @endcan
                         @else
                         <li class="hamburger__nav-item"><a href="/register" class="hamburger__nav-link">Registration</a></li>
                         <li class="hamburger__nav-item"><a href="/login" class="hamburger__nav-link">Login</a></li>

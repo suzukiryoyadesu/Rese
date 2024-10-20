@@ -12,6 +12,7 @@
     </div>
     <form class="form" action="/register" method="post">
         @csrf
+        <input type="hidden" name="role_id" value="1">
         <div class="form__group">
             <div class="form__input">
                 <i class="fa-solid fa-user fa-xl" style="color: #4b4b4b;"></i>

@@ -1,5 +1,5 @@
 .login__content {
-    width: 25vw;
+    width: 400px;
     margin: 20vh auto 0;
     border-radius: 5px;
     background-color: #ffffff;
@@ -7,7 +7,7 @@
 }
 
 .login-form__heading {
-    height: 7vh;
+    height: 60px;
     padding-left: 5%;
     border-radius: 5px 5px 0 0;
     display:flex;
@@ -29,7 +29,7 @@
 
 .form__input {
     width: 100%;
-    margin-top: 4vh;
+    margin-top: 30px;
     display: flex;
     justify-content: space-between;
 }
@@ -46,7 +46,7 @@
 
 .form__input input {
     width: 80%;
-    height: 3vh;
+    height: 30px;
     border: none;
     border-bottom: 1.5px solid #202020;
     outline: none;
@@ -64,8 +64,8 @@
 }
 
 .form__button-submit {
-    height: 3vh;
-    margin: 4vh 0 2vh;
+    height: 30px;
+    margin: 30px 0 30px 0;
     padding: 0 5%;
     border: none;
     border-radius: 5px;
