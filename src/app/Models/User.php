@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'stripe_id',
     ];
 
     /**
@@ -46,6 +47,11 @@ class User extends Authenticatable
     public function favorites()
     {
         return $this->hasMany(Favorite::class);
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
     }
 
     public function favoriteToRestaurants()
@@ -80,6 +86,6 @@ class User extends Authenticatable
 
     public function toRestaurants()
     {
-        return $this->belongsToMany(Restaurant::class, 'restaurants_users', 'user_id', 'restaurant_id');
+        return $this->belongsToMany(Restaurant::class, 'restaurant_user', 'user_id', 'restaurant_id');
     }
 }

@@ -18,7 +18,7 @@
             <span class="tag">#{{ $restaurant->genre->name }}</span>
         </div>
         <div class="restaurant__text">
-            <p>{{ $restaurant->detail }}</p>
+            <p>{!! nl2br( $restaurant->detail ) !!}</p>
         </div>
     </div>
     @if($review == null)
@@ -75,7 +75,7 @@
                 <label class="review-form__evaluating-label-display" for="star1"><i class="fa-solid fa-star"></i></label>
             </div>
             <h3>comment</h3>
-            <p>{{ $review->comment }}</p>
+            <p>{!! nl2br( $review->comment ) !!}</p>
         </div>
         <button class="review-form__button-display" type="button">投稿済</button>
     </div>

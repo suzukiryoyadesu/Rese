@@ -17,7 +17,7 @@ class PermissionMiddleware
     public function handle($request, Closure $next, $permission = null)
     {
         if ($permission !== null && !$request->user()->can($permission)) {
-            return redirect('/no-permission');
+            return response(view('no_permission'));
         }
         return $next($request);
     }

@@ -13,11 +13,11 @@
             <img src="{{ asset($restaurant->image) }}" id="input_image" alt="" />
         </div>
         <div class="restaurant__tag">
-            <span class="tag" id="input_area">{{ $restaurant->area->name }}</span>
-            <span class="tag" id="input_genre">{{ $restaurant->genre->name }}</span>
+            <span class="tag" id="input_area">#{{ $restaurant->area->name }}</span>
+            <span class="tag" id="input_genre">#{{ $restaurant->genre->name }}</span>
         </div>
         <div class="restaurant__text">
-            <p id="input_detail">{{ $restaurant->detail }}</p>
+            <p id="input_detail">{!! nl2br( $restaurant->detail ) !!}</p>
         </div>
     </div>
     <div class="edit__content">

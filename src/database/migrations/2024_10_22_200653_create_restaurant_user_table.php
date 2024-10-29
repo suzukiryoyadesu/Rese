@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesPermissionsTable extends Migration
+class CreateRestaurantUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateRolesPermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles_permissions', function (Blueprint $table) {
+        Schema::create('restaurant_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('role_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('permission_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('restaurant_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateRolesPermissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles_permissions');
+        Schema::dropIfExists('restaurant_user');
     }
 }

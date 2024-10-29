@@ -15,8 +15,6 @@ use App\Http\Controllers\RestaurantController;
 */
 
 Route::middleware('auth')->group(function () {
-        Route::get('/thanks', [RestaurantController::class, 'thanks']);
-        Route::get('/no-permission', [RestaurantController::class, 'noPermission']);
         Route::get('/mypage', [RestaurantController::class, 'mypage']);
         Route::get('/reservation/change', [RestaurantController::class, 'changeReservationView']);
         Route::get('/review', [RestaurantController::class, 'review']);
@@ -26,9 +24,17 @@ Route::middleware('auth')->group(function () {
         Route::delete('/reservation/delete', [RestaurantController::class, 'deleteReservation']);
         Route::patch('/reservation/change', [RestaurantController::class, 'changeReservation']);
         Route::post('/review/post', [RestaurantController::class, 'reviewPost']);
+        Route::get('/card', [RestaurantController::class, 'card']);
+        Route::get('/card/create', [RestaurantController::class, 'cardCreateView']);
+        Route::post('/card/create', [RestaurantController::class, 'cardCreate']);
+        Route::post('/card/delete', [RestaurantController::class, 'cardDelete']);
+        Route::get('/card/update', [RestaurantController::class, 'cardUpdateView']);
+        Route::post('/card/update', [RestaurantController::class, 'cardUpdate']);
         Route::middleware('permission:representative')->group(function () {
                 Route::get('/representative/register', [RestaurantController::class, 'representativeRegisterView']);
                 Route::post('/representative/register', [RestaurantController::class, 'representativeRegister']);
+                Route::get('/notification', [RestaurantController::class, 'notificationView']);
+                Route::post('/notification', [RestaurantController::class, 'notification']);
             }
         );
         Route::middleware('permission:restaurant')->group(function () {
@@ -41,6 +47,10 @@ Route::middleware('auth')->group(function () {
         Route::middleware('permission:reservation')->group(
             function () {
                 Route::get('/reservation/record', [RestaurantController::class, 'reservationRecord']);
+                Route::get('/reservation/qr', [RestaurantController::class, 'reservationQr']);
+                Route::get('/reservation/confirm', [RestaurantController::class, 'reservationConfirm']);
+                Route::get('/reservation/payment', [RestaurantController::class, 'paymentView']);
+                Route::post('/reservation/payment', [RestaurantController::class, 'payment']);
             }
         );
     }

@@ -19,7 +19,7 @@
             <span class="tag">#{{ $reservation->restaurant->genre->name }}</span>
         </div>
         <div class="restaurant__text">
-            <p>{{ $reservation->restaurant->detail }}</p>
+            <p>{!! nl2br( $reservation->restaurant->detail ) !!}</p>
         </div>
     </div>
     <div class="reservation__content">
@@ -42,6 +42,10 @@
                 <tr class="reservation__row">
                     <th class="reservation__header">Number</th>
                     <td class="reservation__description">{{ $reservation->number }}人</td>
+                </tr>
+                <tr class="reservation__row">
+                    <th class="reservation__header">Stripe</th>
+                    <td class="reservation__description">{{ $reservation->payment->name }}</td>
                 </tr>
             </table>
         </div>
@@ -89,6 +93,16 @@
                                 @for($i = 1; $i < 100; $i++)
                                     <option value="{{ $i }}" @if($i==$reservation->number ) selected @endif>{{ $i }}人</option>
                                     @endfor
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="reservation__row">
+                        <th class="reservation__header">Stripe</th>
+                        <td class="reservation__description">
+                            <select name="payment_id">
+                                @foreach($payments as $payment)
+                                <option value="{{ $payment->id }}" @if($payment->id == $reservation->payment_id ) selected @endif>{{ $payment->name }}</option>
+                                @endforeach
                             </select>
                         </td>
                     </tr>

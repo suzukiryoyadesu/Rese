@@ -35,5 +35,5 @@ const formInputDetail = document.forms.form.detail;
 
 formInputDetail.addEventListener('input',()=>{
     let inputDetail = document.getElementById('input_detail');
-    inputDetail.textContent = formInputDetail.value
+    inputDetail.innerText = formInputDetail.value;
 })

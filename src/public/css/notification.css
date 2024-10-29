@@ -1,0 +1,83 @@
+.notification__content {
+    width: 400px;
+    margin: 15vh auto 0;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 3px #a2a2a2;
+}
+
+.notification-form__heading {
+    height: 60px;
+    padding-left: 5%;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    align-items: center;
+    background-color: #3560F6;
+}
+
+.notification-form__heading h2 {
+    margin: 0;
+    font-weight: normal;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.form__table {
+    width: 100%;
+    margin: 15px 0 0 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+.form__row {
+    height: 50px;
+}
+
+.form__header {
+    width: 25%;
+    font-weight: normal;
+}
+
+.form__description {
+    width: 75%;
+}
+
+.form__error {
+    color: #ff0000
+}
+
+.form__description input {
+    width: 100%;
+    border-radius: 5px;
+    border: 1.5px solid #aaaaaa;
+    padding: 4px;
+}
+
+.form__description textarea {
+    width: 100%;
+    height: 60px;
+    border-radius: 5px;
+    border: 1.5px solid #aaaaaa;
+    padding: 4px;
+}
+
+.form__button {
+    text-align: right;
+}
+
+.form__button-submit {
+    height: 30px;
+    margin: 30px 0 30px 0;
+    padding: 0 5%;
+    border: none;
+    border-radius: 5px;
+    background: #3560F6;
+    color: #ffffff;
+    font-size: 1vw;
+    cursor: pointer;
+}

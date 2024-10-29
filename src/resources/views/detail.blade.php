@@ -22,7 +22,7 @@
             <span class="tag">#{{ $restaurant->genre->name }}</span>
         </div>
         <div class="restaurant__text">
-            <p>{{ $restaurant->detail }}</p>
+            <p>{!! nl2br( $restaurant->detail ) !!}</p>
         </div>
     </div>
     <div class="reservation__content">
@@ -48,6 +48,11 @@
                         <option value="{{ $i }}">{{ $i }}人</option>
                         @endfor
                 </select>
+                <select name="payment_id">
+                    @foreach($payments as $payment)
+                    <option value="{{ $payment->id }}">{{ $payment->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="reservation__confirmation">
                 <table class="confirmation__table">
@@ -66,6 +71,10 @@
                     <tr class="confirmation__row">
                         <th class="confirmation__header">Number</th>
                         <td class="confirmation__description" id="input_number"></td>
+                    </tr>
+                    <tr class="confirmation__row">
+                        <th class="confirmation__header">Payment</th>
+                        <td class="confirmation__description" id="input_payment"></td>
                     </tr>
                 </table>
             </div>
@@ -101,7 +110,7 @@
                 <label class="restaurant__review-label" for="star1"><i class="fa-solid fa-star"></i></label>
                 {{ $review->evaluation }}
             </form>
-            <p>{{ $review->comment }}</p>
+            <p>{!! nl2br( $review->comment ) !!}</p>
         </div>
         @endforeach
     </div>

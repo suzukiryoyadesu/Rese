@@ -28,7 +28,8 @@ class ReservationRequest extends FormRequest
         return [
             'date' => 'required|date|after_or_equal:today',
             'time' => 'required',
-            'number' => 'required|integer|min:1|max:99'
+            'number' => 'required|integer|min:1|max:99',
+            'payment_id' => 'required|integer',
         ];
     }
 
@@ -43,6 +44,8 @@ class ReservationRequest extends FormRequest
             'number.integer' => '人数を整数で入力してください',
             'number.min' => '人数を1人以上で入力してください',
             'number.max' => '人数を99人以下で入力してください',
+            'payment_id.required' => '支払方法を必ず入力してください',
+            'payment_id.integer' => '支払方法を選択してください',
         ];
     }
 

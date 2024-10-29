@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/register.css') }}">
+<link rel="stylesheet" href="{{ asset('css/auth/register.css') }}">
 <script src="https://kit.fontawesome.com/0e19cc0cb9.js" crossorigin="anonymous"></script>
 @endsection
 

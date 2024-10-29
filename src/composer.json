@@ -11,7 +11,9 @@
         "laravel/fortify": "^1.19",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "simplesoftwareio/simple-qrcode": "~4",
+        "stripe/stripe-php": "^16.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

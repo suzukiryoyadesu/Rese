@@ -16,23 +16,13 @@
     </form>
     <!-- 予約情報の表示 -->
     <div class="reservation__day">
-        @foreach($reservations as $reservation)
+        <!-- 過去の予約情報の表示 -->
+        @if(!empty($reservations_history))
+        @foreach($reservations_history as $reservation)
         <div class="reservation__card">
-            <!-- 予約情報が今日以降ならば表示 -->
-            @if(!$before)
-            <!-- 予約削除フォーム -->
-            <form class="reservation__form-delete" action="/reservation/delete" method="post">
-                @csrf
-                @method('delete')
-                <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">
-                <input type="hidden" name="page_status" value="{{ $page_status }}">
-                <input type="hidden" name="date" value="{{ $dt }}">
-                <button class="reservation__delete-button"><i class="fa-regular fa-circle-xmark fa-xl" style="color: #ffffff;"></i></button>
-            </form>
-            @endif
             <i class="fa-regular fa-clock fa-xl" style="color: #ffffff;"></i>
             <h3>{{ $reservation->user->name }} 様</h3>
-            <table class="reservation__table" id="reservation__table{{ $loop->iteration }}">
+            <table class="reservation__table">
                 <tr class="reservation__row">
                     <th class="reservation__header">Shop</th>
                     <td class="reservation__description">{{ $reservation->restaurant->name }}</td>
@@ -49,16 +39,65 @@
                     <th class="reservation__header">Number</th>
                     <td class="reservation__description">{{ $reservation->number }}人</td>
                 </tr>
+                <tr class="reservation__row">
+                    <th class="reservation__header">Stripe</th>
+                    <td class="reservation__description">{{ $reservation->payment->name }}</td>
+                </tr>
             </table>
-            <!-- 予約情報が今日以降ならば表示 -->
-            @if(!$before)
-            <!-- 予約変更画面への遷移ボタン -->
-            <a class="reservation-change__link" href="/reservation/change/?reservation_id={{ $reservation->id }}&page_status={{ $page_status }}&date={{ $dt }}">
-                <button class="reservation-change__link-button">変更</button>
+            <!-- 未決済の場合 -->
+            @if($reservation->payment_status == 1)
+            <!-- 決済画面への遷移ボタン -->
+            <a class="reservation__link" href="/reservation/payment/?reservation_id={{ $reservation->id }}&date={{ $dt }}">
+                <button class="reservation__link-button">決済</button>
             </a>
             @endif
         </div>
         @endforeach
+        @endif
+        <!-- 現在以降の予約情報の表示 -->
+        @if(!empty($reservations))
+        @foreach($reservations as $reservation)
+        <div class="reservation__card">
+            <!-- 予約削除フォーム -->
+            <form class="reservation__form-delete" action="/reservation/delete" method="post">
+                @csrf
+                @method('delete')
+                <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">
+                <input type="hidden" name="page_status" value="{{ $page_status }}">
+                <input type="hidden" name="date" value="{{ $dt }}">
+                <button class="reservation__delete-button"><i class="fa-regular fa-circle-xmark fa-xl" style="color: #ffffff;"></i></button>
+            </form>
+            <i class="fa-regular fa-clock fa-xl" style="color: #ffffff;"></i>
+            <h3>{{ $reservation->user->name }} 様</h3>
+            <table class="reservation__table">
+                <tr class="reservation__row">
+                    <th class="reservation__header">Shop</th>
+                    <td class="reservation__description">{{ $reservation->restaurant->name }}</td>
+                </tr>
+                <tr class="reservation__row">
+                    <th class="reservation__header">Date</th>
+                    <td class="reservation__description">{{ $reservation->date }}</td>
+                </tr>
+                <tr class="reservation__row">
+                    <th class="reservation__header">Time</th>
+                    <td class="reservation__description">{{ substr($reservation->time,0,5) }}</td>
+                </tr>
+                <tr class="reservation__row">
+                    <th class="reservation__header">Number</th>
+                    <td class="reservation__description">{{ $reservation->number }}人</td>
+                </tr>
+                <tr class="reservation__row">
+                    <th class="reservation__header">Stripe</th>
+                    <td class="reservation__description">{{ $reservation->payment->name }}</td>
+                </tr>
+            </table>
+            <!-- 予約変更画面への遷移ボタン -->
+            <a class="reservation__link" href="/reservation/change/?reservation_id={{ $reservation->id }}&page_status={{ $page_status }}&date={{ $dt }}">
+                <button class="reservation__link-button">変更</button>
+            </a>
+        </div>
+        @endforeach
+        @endif
     </div>
 </div>
 @endsection

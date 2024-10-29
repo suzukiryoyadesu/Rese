@@ -34,3 +34,15 @@ formInputNumber.addEventListener('input',()=>{
     let inputNumber  = document.getElementById('input_number');
     inputNumber.textContent = formInputNumber.value + "人"
 })
+
+const formInputPayment = document.forms.reservation__form.payment_id;
+
+window.addEventListener('load',()=>{
+    let inputPayment  = document.getElementById('input_payment');
+    inputPayment.textContent = formInputPayment.options[formInputPayment.selectedIndex].textContent
+})
+
+formInputPayment.addEventListener('input',()=>{
+    let inputPayment  = document.getElementById('input_payment');
+    inputPayment.textContent = formInputPayment.options[formInputPayment.selectedIndex].textContent
+})

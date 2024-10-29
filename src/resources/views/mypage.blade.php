@@ -40,6 +40,10 @@
                     <th class="reservation__header">Number</th>
                     <td class="reservation__description">{{ $reservation->number }}人</td>
                 </tr>
+                <tr class="reservation__row">
+                    <th class="reservation__header">Stripe</th>
+                    <td class="reservation__description">{{ $reservation->payment->name }}</td>
+                </tr>
             </table>
             <!-- 予約変更画面への遷移ボタン -->
             <a class="reservation-change__link" href="/reservation/change/?reservation_id={{ $reservation->id }}&page_status={{ $page_status }}">
@@ -71,6 +75,10 @@
                 <tr class="reservation__row">
                     <th class="reservation__header">Number</th>
                     <td class="reservation__description">{{ $reservation->number }}人</td>
+                </tr>
+                <tr class="reservation__row">
+                    <th class="reservation__header">Stripe</th>
+                    <td class="reservation__description">{{ $reservation->payment->name }}</td>
                 </tr>
             </table>
             <a class="review__link" href="/review/?restaurant_id={{ $reservation->restaurant->id }}">

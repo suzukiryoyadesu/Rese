@@ -28,7 +28,7 @@ class RestaurantRequest extends FormRequest
                 'area_id' => 'required|integer',
                 'genre_id' => 'required|integer',
                 'name' => 'required|string|max:50',
-                'image' => 'file|mimes:jpg,jpeg,png',
+                'image' => 'file|mimes:jpg,jpeg',
                 'detail' => 'required|string|max:300',
             ];
         }else{

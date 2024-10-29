@@ -12,11 +12,7 @@
         @endif
     </div>
     <div class="done__link">
-        @if($message == "ご予約ありがとうございます")
-        <a href="/detail/?restaurant_id={{ $reservation_array['restaurant_id'] }}&access_time={{ $access_time }}&page_status={{ $page_status }}">
-            <button class="done__button">戻る</button>
-        </a>
-        @elseif($message == "店舗代表者に登録しました")
+        @if($message == "店舗代表者に登録しました")
         <a href="/representative/register">
             <button class="done__button">戻る</button>
         </a>

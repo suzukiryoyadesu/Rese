@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Role;
 
-class RolesPermissionsTableSeeder extends Seeder
+class PermissionsRolesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
