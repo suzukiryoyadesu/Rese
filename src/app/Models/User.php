@@ -23,6 +23,8 @@ class User extends Authenticatable
         'password',
         'role_id',
         'stripe_id',
+        'tfa_token',
+        'tfa_expiration',
     ];
 
     /**

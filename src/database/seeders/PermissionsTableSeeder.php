@@ -15,7 +15,7 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         $permission = [
-            'name' => 'representative',
+            'name' => 'admin',
         ];
         DB::table('permissions')->insert($permission);
         $permission = [

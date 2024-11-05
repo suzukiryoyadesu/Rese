@@ -25,6 +25,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('tfAuth', function ($user) {
+            return ($user->tfa_token == null);
+        });
     }
 }

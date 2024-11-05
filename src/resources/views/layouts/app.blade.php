@@ -24,6 +24,7 @@
                     <ul class="hamburger__nav-list">
                         <li class="hamburger__nav-item"><a href="/" class="hamburger__nav-link">Home</a></li>
                         @if (Auth::check())
+                        @can('tfAuth')
                         <li class="hamburger__nav-item">
                             <form action="/logout" method="post">
                                 @csrf
@@ -32,7 +33,7 @@
                         </li>
                         <li class="hamburger__nav-item"><a href="/mypage" class="hamburger__nav-link">Mypage</a></li>
                         <li class="hamburger__nav-item"><a href="/card" class="hamburger__nav-link">Stripe</a></li>
-                        @can('representative')
+                        @can('admin')
                         <li class="hamburger__nav-item"><a href="/representative/register" class="hamburger__nav-link">Registration(Rep)</a></li>
                         <li class="hamburger__nav-item"><a href="/notification" class="hamburger__nav-link">Notification</a></li>
                         @endcan
@@ -43,6 +44,9 @@
                         @can('reservation')
                         <li class="hamburger__nav-item"><a href="/reservation/record" class="hamburger__nav-link">Reservation</a></li>
                         <li class="hamburger__nav-item"><a href="/reservation/qr" class="hamburger__nav-link">Reservation(QR)</a></li>
+                        @endcan
+                        @else
+                        <li class="hamburger__nav-item"><a href="/two-factor-auth/wait" class="hamburger__nav-link">TwoFactorAuth</a></li>
                         @endcan
                         @else
                         <li class="hamburger__nav-item"><a href="/register" class="hamburger__nav-link">Registration</a></li>

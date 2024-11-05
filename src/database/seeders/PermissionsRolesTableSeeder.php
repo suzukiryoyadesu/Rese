@@ -18,7 +18,7 @@ class PermissionsRolesTableSeeder extends Seeder
         $permissions = array('restaurant', 'reservation');
         $role->givePermissions($permissions);
         $role = Role::find(3);
-        $permissions = array('restaurant', 'reservation', 'representative');
+        $permissions = array('restaurant', 'reservation', 'admin');
         $role->givePermissions($permissions);
     }
 }
