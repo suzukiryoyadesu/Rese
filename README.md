@@ -79,7 +79,7 @@ $ cd src
 # .env.local(ローカル環境用)
 $ cp .env.local .env
 $ sudo chmod -R 777 storage
-$cd ../
+$ cd ../
 ```
 
 ### コマンドライン上
@@ -112,5 +112,14 @@ $ crontab -e
 $ service cron start
 ```
 
+## テストアカウント
+| Name | Email | password |
+| ---- | ----- | -------- |
+| 管理者 | test@example.com  | password |
+| ユーザ１ | test1@example.com  | password |
+| ユーザ２ | test2@example.com  | password |
+
 ## 備考
-ローカル環境でのメール関連はMailHog使用。
+* ローカル環境でのメール関連はMailHog使用。
+* リマインダー機能は、午前7時に当日の午前9時から翌日の午前8時59分までの予約を通知。
+* Stripe決済は後日決済で予約一覧(管理画面)から行う。
