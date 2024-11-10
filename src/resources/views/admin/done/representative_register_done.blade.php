@@ -12,11 +12,9 @@
         @endif
     </div>
     <div class="done__link">
-        @if($message == "店舗代表者に登録しました")
         <a href="/representative/register">
             <button class="done__button">戻る</button>
         </a>
-        @endif
     </div>
 </div>
 @endsection

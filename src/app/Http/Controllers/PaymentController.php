@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Reservation;
 use App\Http\Requests\ReservationRequest;
+use App\Mail\PaymentMail;
 
 class PaymentController extends Controller
 {
@@ -44,10 +46,12 @@ class PaymentController extends Controller
      */
     public function payment(Request $request)
     {
-        // 予約情報、日付、ユーザー情報の取得
+        // 予約情報、日付、ユーザー情報、飲食店情報、決済情報の取得
         $reservation = Reservation::find($request->reservation_id);
         $dt = $request->date;
-        $user = $reservation->user->first();
+        $user = $reservation->user()->first();
+        $restaurant = $reservation->restaurant()->first();
+        $payment = $reservation->payment()->first();
 
         // バリデーションルール、メッセージの作成
         $rules = [
@@ -91,6 +95,19 @@ class PaymentController extends Controller
             // 支払済みにする
             $reservation->payment_status = 2;
             $reservation->update();
+
+            // メール送信処理
+            $mail_data = [
+                'user_name' => $user->name,
+                'restaurant_name' => $restaurant->name,
+                'date' => $reservation->date,
+                'time' => $reservation->time,
+                'number' => $reservation->number,
+                'payment_name' => $payment->name,
+                'amount' => $amount,
+            ];
+            $mail = new PaymentMail($mail_data);
+            Mail::to($user->email)->send($mail);
 
             // 決済完了画面の表示
             $message = '決済が完了しました';

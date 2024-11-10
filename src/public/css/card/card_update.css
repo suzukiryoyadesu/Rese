@@ -1,15 +1,14 @@
 .card__content {
     width: 400px;
-    margin: 15vh auto 0;
+    margin: 10vh auto 0;
     border-radius: 5px;
     background-color: #ffffff;
     box-shadow: 5px 5px 3px #a2a2a2;
-    position: relative;
 }
 
 .card__heading {
     height: 60px;
-    padding-left: 5%;
+    padding-left: 30px;
     border-radius: 5px 5px 0 0;
     display: flex;
     align-items: center;
@@ -19,13 +18,13 @@
 .card__heading h2 {
     margin: 0;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 18px;
     color: #ffffff;
 }
 
 .card__form {
     width: 80%;
-    margin: 15px auto 0;
+    margin: 30px auto 0;
 }
 
 .form__group {
@@ -35,11 +34,13 @@
 }
 
 .form__group label {
-    font-size: 14px;
+    width: 40%;
+    font-size: 16px;
 }
 
 #cardNumber, #securityCode, #expiration {
-    width: 160px;
+    width: 60%;
+    height: 25px;
     border-radius: 5px;
     border: 1.5px solid #aaaaaa;
     padding: 4px;
@@ -51,12 +52,22 @@
 
 .btn {
     height: 30px;
-    margin: 0 0 15px 0;
-    padding: 0 5%;
+    margin: 0 0 30px 0;
+    padding: 0 30px;
     border: none;
     border-radius: 5px;
     background: #3560F6;
     color: #ffffff;
     font-size: 16px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .card__content {
+        width: 300px;
+    }
+
+    .form__group label {
+        font-size: 15px;
+    }
 }

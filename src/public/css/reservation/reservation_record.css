@@ -1,13 +1,9 @@
-.reservation__content {
-    margin: 0 0 0 30px;
-}
-
 .date__form {
     position: relative;
     background: #ffffff;
     width: 250px;
     height: 35px;
-    margin: 30px 0;
+    margin: 30px 0 30px 30px;
     border: 1.5px solid #cccccc;
     border-radius: 15px;
 }
@@ -37,15 +33,15 @@
     font-weight: bold;
 }
 
-.reservation__day {
+.reservation {
     display: flex;
     flex-wrap: wrap;
+    margin: 0 0 0 30px
 }
 
 .reservation__card {
     position: relative;
     width: 300px;
-    height: 270px;
     margin: 0 30px 30px 0;
     padding: 15px 0;
     color: #ffffff;
@@ -54,52 +50,26 @@
     box-shadow: 2px 2px 0.5px #a2a2a2;
 }
 
-.reservation__delete-button {
-    position: absolute;
-    right: 15px;
-    top: 30px;
-    width: 20px;
-    height: 20px;
-    padding: 0;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    appearance: none;
-    text-decoration: none;
-    cursor: pointer;
+.reservation-history__card-ttl {
+    margin: 0 0 15px 0;
+    padding: 0 15px 0 15px;
+    display: flex;
+    align-items: center;
 }
 
-.reservation__delete-button i {
-    width: 100%;
-    height: 100%;
+.reservation-history__card-ttl i {
+    display: flex;
+    align-items: center;
 }
 
-.reservation__delete-button i::before {
-    transform: translate(-50%, -50%);
-}
-
-.reservation__card > i {
-    position: absolute;
-    left: 15px;
-    top: 30px;
-    width: 20px;
-    height: 20px;
-}
-
-.reservation__card > i::before {
-    position: absolute;
-    left: 0;
-    top: 50%;
-}
-
-.reservation__card h3 {
+.reservation-history__card-ttl h3 {
     font-weight: normal;
-    margin: 15px 0;
-    padding: 0 0 0 60px;
+    margin: 0 0 0 5px;
+    padding: 0;
 }
 
 .reservation__table {
-    margin: 0 15px;
+    margin: 0 0 0 15px;
     text-align: left;
 }
 
@@ -116,16 +86,76 @@
     width: 120px;
 }
 
+.reservation__link {
+    margin: 0 15px 0 0;
+    text-align: right;
+}
+
 .reservation__link-button {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    width: 90px;
     height: 30px;
+    padding: 0 15px;
     background-color: #ffffff;
     border: none;
     border-radius: 5px;
     color: #3560F6;
     font-weight: bold;
     cursor: pointer;
+}
+
+.reservation__card-ttl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 15px 0;
+    padding: 0 15px 0 15px;
+}
+
+.card__ttl-left {
+    display: flex;
+    align-items: center;
+}
+
+.card__ttl-left i {
+    display: flex;
+    align-items: center;
+}
+
+.card__ttl-left h3 {
+    font-weight: normal;
+    margin: 0 0 0 5px;
+    padding: 0;
+}
+
+.reservation__delete-button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    appearance: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.reservation__delete-button i {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .date__form {
+        margin: 30px auto 30px;
+    }
+
+    .reservation {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .reservation:after {
+        content: '';
+        width: 300px;
+        margin: 0 30px 30px 0;
+    }
 }

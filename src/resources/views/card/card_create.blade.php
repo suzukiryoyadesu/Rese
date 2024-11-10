@@ -6,33 +6,29 @@
 
 @section('content')
 <div class="card__content">
-    @if (session('errors'))
-    <div class="alert alert-danger" role="alert">
-        {{ session('errors') }}
-    </div>
-    @endif
     <div class="card__heading">
         <h2>Stripe</h2>
     </div>
     <form action="/card/create" class="card__form" id="form_payment" method="POST">
         @csrf
         <div class="form__group">
-            <label for="name">カード番号</label>
+            <label>カード番号</label>
             <div id="cardNumber"></div>
         </div>
-
         <div class="form__group">
-            <label for="name">セキュリティコード</label>
+            <label>
+                セキュリティ
+                <br />
+                コード
+            </label>
             <div id="securityCode"></div>
         </div>
-
         <div class="form__group">
-            <label for="name">有効期限</label>
+            <label>有効期限</label>
             <div id="expiration"></div>
         </div>
-
         <div class="button__group">
-            <button type="submit" id="create_token" class="btn btn-primary">登録</button>
+            <button type="submit" id="create_token" class="btn">登録</button>
         </div>
     </form>
 </div>

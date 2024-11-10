@@ -6,7 +6,9 @@
 外部の飲食店予約サービスは手数料を取られるので自社で予約サービスを持つため。
 
 ## アプリケーションURL
-http://localhost/
+* Rese:http://localhost/
+* phpMyAdmin:http://localhost:8080
+* MailHog:http://localhost:8025
 
 ## 他のリポジトリ
 なし
@@ -38,10 +40,10 @@ http://localhost/
 ## 使用技術(実行環境)
 * PHP 8.1.30
 * Laravel 8.83.27
-* mailhog
+* MailHog
 * javascript
 * mysql 8.0.26
-* phpmyadmin
+* phpMyAdmin
 * nginx 1.21.1
 * Docker 25.0.3
 
@@ -57,6 +59,7 @@ http://localhost/
 ### コマンドライン上
 ```
 $ git clone https://github.com/suzukiryoyadesu/Rese.git
+$ cd Rese
 ```
 
 ```
@@ -67,13 +70,21 @@ $ docker-compose exec php bash
 ### PHPコンテナ上
 ```
 $ composer install
+$ exit
 ```
 
 ### src上
 ```
+$ cd src
 # .env.local(ローカル環境用)
 $ cp .env.local .env
 $ sudo chmod -R 777 storage
+$cd ../
+```
+
+### コマンドライン上
+```
+$ docker-compose exec php bash
 ```
 
 ### PHPコンテナ上
@@ -92,6 +103,7 @@ $ apt-get install vim
 $ crontab -e
 ```
 
+最終行に追加して保存
 ```
 * * * * * cd /var/www && /usr/local/bin/php artisan schedule:run >> /dev/null 2>&1
 ```
@@ -99,3 +111,6 @@ $ crontab -e
 ```
 $ service cron start
 ```
+
+## 備考
+ローカル環境でのメール関連はMailHog使用。

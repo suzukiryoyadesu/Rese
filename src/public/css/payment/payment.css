@@ -1,6 +1,6 @@
 .payment__content {
     width: 400px;
-    margin: 15vh auto 0;
+    margin: 10vh auto 0;
     border-radius: 5px;
     background-color: #ffffff;
     box-shadow: 5px 5px 3px #a2a2a2;
@@ -8,7 +8,7 @@
 
 .payment-form__heading {
     height: 60px;
-    padding-left: 5%;
+    padding-left: 30px;
     border-radius: 5px 5px 0 0;
     display: flex;
     align-items: center;
@@ -18,23 +18,12 @@
 .payment-form__heading h2 {
     margin: 0;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 18px;
     color: #ffffff;
 }
 
-.reservation__header {
-    text-align: left;
-    font-weight: normal;
-    width: 120px;
-    height: 30px;
-}
-
-.reservation__description {
-    width: 200px;
-}
-
 .reservation__information {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
 }
 
@@ -44,28 +33,44 @@
     font-size: 16px;
 }
 
+.reservation__table {
+    width: 100%;
+}
+
+.reservation__header {
+    text-align: left;
+    font-weight: normal;
+    width: 50%;
+    height: 30px;
+}
+
+.reservation__description {
+    width: 50%;
+}
+
 .form {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
 }
 
 .form__table {
+    width: 100%;
     margin: 15px 0 0 0;
     font-size: 16px;
     text-align: left;
 }
 
 .form__row {
-    height: 50px;
+    height: 30px;
 }
 
 .form__header {
-    width: 120px;
+    width: 50%;
     font-weight: normal;
 }
 
 .form__description {
-    width: 150px;
+    width: 50%;
 }
 
 .form__error {
@@ -87,11 +92,17 @@
 .form__button-submit {
     height: 30px;
     margin: 30px 0 30px 0;
-    padding: 0 5%;
+    padding: 0 30px;
     border: none;
     border-radius: 5px;
     background: #3560F6;
     color: #ffffff;
-    font-size: 1vw;
+    font-size: 16px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .payment__content {
+        width: 300px;
+    }
 }

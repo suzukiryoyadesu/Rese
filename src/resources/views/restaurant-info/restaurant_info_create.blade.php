@@ -67,7 +67,7 @@
                 </tr>
             </table>
             @if ($errors->any())
-            <p class="create__error-message">・{{$errors->first()}}</p>
+            <p class="create__error-message">{{$errors->first()}}</p>
             @endif
             <button>作成する</button>
         </form>

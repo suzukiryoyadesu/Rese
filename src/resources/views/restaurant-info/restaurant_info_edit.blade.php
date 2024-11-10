@@ -69,7 +69,7 @@
                 </tr>
             </table>
             @if ($errors->any())
-            <p class="edit__error-message">・{{$errors->first()}}</p>
+            <p class="edit__error-message">{{$errors->first()}}</p>
             @endif
             <button>更新する</button>
         </form>

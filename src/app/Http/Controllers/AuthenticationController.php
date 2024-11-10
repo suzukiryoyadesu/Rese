@@ -76,7 +76,6 @@ class AuthenticationController extends Controller
         $messages = [
             '送信されたURLより認証してください',
             '認証後、完了ボタンを押下してください',
-
         ];
 
         // 2段階認証待機画面の表示

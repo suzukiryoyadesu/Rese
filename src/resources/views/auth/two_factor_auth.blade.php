@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/auth/two_factor_auth.css') }}">
 </head>
 
-<body onload="this.form.submit()">
+<body>
     <header>
         <div class="header__inner">
             <h1>Rese</h1>
