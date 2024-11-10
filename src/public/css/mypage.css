@@ -21,9 +21,7 @@
 }
 
 .reservation__card {
-    position: relative;
     width: 300px;
-    height: 270px;
     margin: 0 0 30px 0;
     padding: 15px 0;
     color: #ffffff;
@@ -32,13 +30,33 @@
     box-shadow: 2px 2px 0.5px #a2a2a2;
 }
 
-.reservation__delete-button {
-    position: absolute;
-    right: 15px;
-    top: 30px;
-    width: 20px;
-    height: 20px;
+.reservation__card-ttl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 15px 0;
+    padding: 0 15px 0 15px;
+}
+
+.card__ttl-left {
+    display: flex;
+    align-items: center;
+}
+
+.card__ttl-left i {
+    display: flex;
+    align-items: center;
+}
+
+.card__ttl-left h4 {
+    font-weight: normal;
+    margin: 0 0 0 5px;
     padding: 0;
+}
+
+.reservation__delete-button {
+    display: flex;
+    align-items: center;
     background-color: transparent;
     border: none;
     outline: none;
@@ -48,36 +66,12 @@
 }
 
 .reservation__delete-button i {
-    width: 100%;
-    height: 100%;
-}
-
-.reservation__delete-button i::before {
-    transform: translate(-50%, -50%);
-}
-
-.reservation__card > i {
-    position: absolute;
-    left: 15px;
-    top: 30px;
-    width: 20px;
-    height: 20px;
-}
-
-.reservation__card > i::before {
-    position: absolute;
-    left: 0;
-    top: 50%;
-}
-
-.reservation__card h4 {
-    font-weight: normal;
-    margin: 15px 0;
-    padding: 0 0 0 60px;
+    display: flex;
+    align-items: center;
 }
 
 .reservation__table {
-    margin: 0 15px;
+    margin: 0 0 0 15px;
     text-align: left;
 }
 
@@ -94,12 +88,14 @@
     width: 120px;
 }
 
-.reservation-change__link-button {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    width: 90px;
+.reservation__link {
+    margin: 0 15px 0 0;
+    text-align: right;
+}
+
+.reservation__link-button {
     height: 30px;
+    padding: 0 15px;
     background-color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -110,6 +106,7 @@
 
 .reservation-history__ttl {
     width: 400px;
+    height: 50px;
     margin: 30px 0 30px 30px;
 }
 
@@ -119,18 +116,22 @@
     margin: 0 0 0 30px;
 }
 
-.review__link-button {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    width: 90px;
-    height: 30px;
-    background-color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    color: #3560F6;
-    font-weight: bold;
-    cursor: pointer;
+.reservation-history__card-ttl {
+    margin: 0 0 15px 0;
+    padding: 0 15px 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+.reservation-history__card-ttl i {
+    display: flex;
+    align-items: center;
+}
+
+.reservation-history__card-ttl h4 {
+    font-weight: normal;
+    margin: 0 0 0 5px;
+    padding: 0;
 }
 
 .favorite__ttl {
@@ -151,7 +152,6 @@
 
 .restaurant__card {
     width: 300px;
-    height: 350px;
     margin: 0 30px 30px 0;
     border-radius: 5px;
     background-color: #ffffff;
@@ -173,6 +173,7 @@
 
 .restaurant__text h4 {
     margin: 5px 0 5px;
+    font-size: 24px;
 }
 
 .restaurant__tag {
@@ -195,25 +196,13 @@
 }
 
 .favorite__form-button {
+    padding: 0;
     background-color: transparent;
     border: none;
     outline: none;
     appearance: none;
     text-decoration: none;
     cursor: pointer;
-}
-
-.favorite__form-button i {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.favorite__form-button i::before {
-    position: absolute;
-    right: 50%;
-    bottom: 50%;
-    transform: translate(50%, 50%);
 }
 
 .restaurant_review {
@@ -248,4 +237,71 @@
 .restaurant_review-item {
     height: 24px;
     margin: 5px 0 5px 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .mypage__content {
+        position: static;
+    }
+
+    .mypage__content h2 {
+        padding: 0;
+        margin: 30px 0 30px 30px;
+        height: 50px;
+    }
+
+    .reservation__ttl {
+        width: auto;
+    }
+
+    .reservation__content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .reservation__card {
+        width: 300px;
+        margin: 0 30px 30px 0;
+        padding: 15px 0;
+    }
+
+    .reservation__content:after {
+        content: '';
+        width: 300px;
+        margin: 0 0 30px 30px;
+    }
+
+    .reservation-history__ttl {
+        width: auto;
+    }
+
+    .reservation-history__content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .reservation-history__content:after {
+        content: '';
+        width: 300px;
+        margin: 0 0 30px 30px;
+    }
+
+    .favorite__ttl {
+        margin: 30px 0 30px 30px;
+        position: static;
+    }
+
+    .favorite__content {
+        position: static;
+        justify-content: center;
+        margin: 0 0 0 30px;
+    }
+
+    .favorite__content:after {
+        content: '';
+        width: 300px;
+        margin: 0 30px 30px 0;
+    }
 }

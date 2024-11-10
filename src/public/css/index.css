@@ -3,11 +3,11 @@
 }
 
 .search-form__item {
-    width: 499px;
+    width: 500px;
     display: flex;
     position: absolute;
-    right: 40px;
-    bottom: 0;
+    right: 30px;
+    bottom: 40px;
 }
 
 .search-form__select-left {
@@ -111,25 +111,13 @@
 }
 
 .favorite__form-button {
+    padding: 0;
     background-color: transparent;
     border: none;
     outline: none;
     appearance: none;
     text-decoration: none;
     cursor: pointer;
-}
-
-.favorite__form-button i {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.favorite__form-button i::before {
-    position: absolute;
-    right: 50%;
-    bottom: 50%;
-    transform: translate(50%, 50%);
 }
 
 .restaurant__review {
@@ -164,4 +152,55 @@
 .restaurant__review-item {
     height: 24px;
     margin: 5px 0 5px 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .restaurant__search-form {
+        position: static;
+    }
+
+    .search-form__item {
+        width: 80vw;
+        position: static;
+        margin: 0 auto 0;
+    }
+
+    .search-form__select-left {
+        width: 25%;
+        height: 30px;
+        font-size: 9px;
+    }
+
+    .search-form__select-middle {
+        width: 25%;
+        height: 30px;
+        font-size: 9px;
+    }
+
+    .search-form__item i::before {
+        font-size: 16px;
+    }
+
+    .search-form__input-right {
+        width: 50%;
+        height: 30px;
+        padding: 3px 3px 3px 25px;
+        font-size: 9px;
+    }
+
+    .restaurant__content {
+        padding: 0 10px 0 10px;
+        justify-content: center;
+    }
+
+    .restaurant__card {
+        width: 250px;
+        margin: 20px;
+    }
+
+    .restaurant__content:after {
+        content:'';
+        width: 250px;
+        margin: 20px;
+    }
 }

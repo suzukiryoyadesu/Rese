@@ -1,30 +1,44 @@
 .thanks__content {
-    width: 25vw;
-    margin: 20vh auto 0;
-    padding: 10vh 0;
+    width: 400px;
+    margin: 15vh auto 0;
+    padding: 30px 0 0 0;
     border-radius: 5px;
     background-color: #ffffff;
     box-shadow: 5px 5px 3px #a2a2a2;
 }
 
 .thanks__message {
-    margin: 0;
-    text-align: center;
-    font-size: 1vw;
+    margin: 0 auto 0;
+    width: 90%;
+    height: 80px;
+    font-size: 16px;
     font-weight: bold;
 }
 
+.thanks__message p {
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
 .thanks__link {
-    margin: 4vh 0 0;
     text-align: center;
 }
 
 .thanks__button {
-    padding: 0.5vh 1vw;
+    height: 30px;
+    margin: 0 0 30px 0;
+    padding: 0 30px;
     border: none;
     border-radius: 5px;
     background: #3560F6;
     color: #ffffff;
-    font-size: 0.8vw;
+    font-size: 16px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .thanks__content {
+        width: 300px;
+    }
 }

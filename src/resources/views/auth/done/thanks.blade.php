@@ -10,7 +10,7 @@
         <p>会員登録ありがとうございます</p>
     </div>
     <div class="thanks__link">
-        <a href="/two-factor-auth/wait">
+        <a href="/thanks/login">
             <button class="thanks__button">ログインする</button>
         </a>
     </div>

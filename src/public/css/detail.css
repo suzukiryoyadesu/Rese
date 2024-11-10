@@ -1,7 +1,6 @@
 .detail__content {
     position: relative;
-    margin: 30px 0 0 0;
-    padding: 0 0 0 30px;
+    padding: 0 0 30px 30px;
     min-height: 580px;
 }
 
@@ -41,7 +40,7 @@
 }
 
 .restaurant__text {
-    margin: 20px 0 0 0;
+    margin: 20px 0 30px 0;
     font-size: 14px;
 }
 
@@ -68,7 +67,7 @@
 }
 
 .reservation__form-input input {
-    width: 10vw;
+    width: 40%;
     margin: 0 0 15px 0;
     border-radius: 5px;
     padding: 4px;
@@ -76,7 +75,7 @@
 }
 
 .reservation__form-input select {
-    width: 32vw;
+    width: 90%;
     margin: 0 0 15px 0;
     border-radius: 5px;
     padding: 4px;
@@ -84,7 +83,7 @@
 }
 
 .reservation__confirmation {
-    width: 30vw;
+    width: 70%;
     margin: 0 30px 0;
     padding: 15px;
     background-color: #5580f7;
@@ -94,14 +93,16 @@
 .confirmation__table {
     color: #ffffff;
     text-align: left;
+    width: 100%;
 }
 
 .confirmation__row {
+    width: 100%;
     height: 30px;
 }
 
 .confirmation__header {
-    width: 90px;
+    width: 30%;
     font-weight: normal;
 }
 
@@ -120,7 +121,7 @@
     right: 0;
     bottom: 0;
     width: 40vw;
-    height: 5%;
+    height: 30px;
     background-color: #003ff5;
     border: none;
     border-radius: 0 0 5px 5px;
@@ -130,6 +131,7 @@
 }
 
 .review__content {
+    width: 40vw;
     margin: 30px 0 0 0;
 }
 
@@ -139,7 +141,6 @@
 }
 
 .restaurant__review {
-    width: 40vw;
     border-bottom: 1px solid #cccccc;
     margin: 0 0 15px 0;
 }
@@ -175,4 +176,51 @@
     margin: 0;
     padding: 0 3px;
     font-size: 13px;
+}
+
+@media screen and (max-width: 768px) {
+    .detail__content {
+        position: static;
+        padding: 0 30px 30px 30px;
+    }
+
+    .restaurant__content {
+        width: 100%;
+    }
+
+    .reservation__content {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        margin: 0 0 0 30px;
+        padding: 20px 0 0 0;
+    }
+
+    .reservation__content h2 {
+        margin: 0 0 20px 30px;
+    }
+
+    .reservation__form-input input {
+        width: 50%;
+    }
+
+    .reservation__form-input select {
+        width: 100%;
+    }
+
+    .reservation__confirmation {
+        width: 80%;
+    }
+
+    .confirmation__header {
+        width: 40%;
+    }
+
+    .reservation__form button {
+        width: 100%;
+    }
+
+    .review__content {
+        width: 100%;
+    }
 }

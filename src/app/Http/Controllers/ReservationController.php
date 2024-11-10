@@ -193,13 +193,13 @@ class ReservationController extends Controller
         if ($reservation->date == $dt_now->format("Y-m-d")) {
 
             // 予約時間が現在の時刻より後の場合
-            if ($reservation->time > $dt_now->format("H:i")) {
+            if ($reservation->time > $dt_now->format("H:i:s")) {
                 $reservation->delete();
                 $message = '予約を削除しました';
             }
 
             // 予約時間が現在の時刻以前の場合
-            if ($reservation->time <= $dt_now->format("H:i")) {
+            if ($reservation->time <= $dt_now->format("H:i:s")) {
                 $message = '予約日時を過ぎているため、削除できません';
             }
         }
@@ -277,7 +277,7 @@ class ReservationController extends Controller
         if ($reservation->date == $dt_now->format("Y-m-d")) {
 
             // 予約時間が現在の時刻より後の場合
-            if ($reservation->time > $dt_now->format("H:i")) {
+            if ($reservation->time > $dt_now->format("H:i:s")) {
 
                 // 予約一覧画面から遷移の場合
                 if ($page_status == 'reservation_record') {
@@ -294,7 +294,7 @@ class ReservationController extends Controller
             }
 
             // 予約時間が現在の時刻以前の場合
-            if ($reservation->time <= $dt_now->format("H:i")) {
+            if ($reservation->time <= $dt_now->format("H:i:s")) {
 
                 // 予約一覧画面から遷移の場合
                 if ($page_status == 'reservation_record') {
@@ -371,7 +371,7 @@ class ReservationController extends Controller
         if ($reservation->date == $dt_now->format("Y-m-d")) {
 
             // 予約時間が現在の時刻より後の場合
-            if ($reservation->time > $dt_now->format("H:i")) {
+            if ($reservation->time > $dt_now->format("H:i:s")) {
                 // 予約情報のセット
                 $reservation_array = $request->only(['date', 'time', 'number', 'payment_id']);
 
@@ -428,7 +428,7 @@ class ReservationController extends Controller
             }
 
             // 予約時間が現在の時刻以前の場合
-            if ($reservation->time <= $dt_now->format("H:i")) {
+            if ($reservation->time <= $dt_now->format("H:i:s")) {
                 $message = '予約日時を過ぎているため、変更できません';
             }
         }

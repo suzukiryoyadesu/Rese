@@ -142,4 +142,24 @@ class AuthenticationController extends Controller
     {
         return view('auth.done.thanks');
     }
+
+    /**
+     * サンクスページからの遷移処理
+     *
+     */
+    public function thanksLogin()
+    {
+        // ユーザー情報の取得
+        $user = Auth::user();
+
+        // 2段階認証前の場合
+        if ($user->tfa_token != null) {
+            return redirect('/two-factor-auth/wait');
+        }
+
+        // 2段階認証済の場合
+        if ($user->tfa_token == null) {
+            return redirect('/');
+        }
+    }
 }

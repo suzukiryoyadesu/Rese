@@ -30,6 +30,7 @@ Route::post('/two-factor-auth', [AuthenticationController::class, 'twoFactorAuth
 Route::middleware('auth')->group(
     function () {
         Route::get('/thanks', [AuthenticationController::class, 'thanks']);
+        Route::get('/thanks/login', [AuthenticationController::class, 'thanksLogin']);
         Route::get('/two-factor-auth/wait', [AuthenticationController::class, 'twoFactorAuthWaitView']);
         Route::post('/two-factor-auth/wait/mail', [AuthenticationController::class, 'twoFactorAuthMail']);
     }

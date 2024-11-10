@@ -15,9 +15,18 @@ use App\Models\Review;
 
 class RestaurantController extends Controller
 {
+    /**
+     * 飲食店一覧ページの表示
+     *
+     * @param Request $request リクエスト
+     * @return view index.blade
+     */
     public function index(Request $request)
     {
+        // セッションキーのセット
         $access_time = Carbon::now()->format('Y/m/d  H:i:s.v');
+
+        // 検索条件のリセット
         $search_condition = [
             'access_time' => $access_time,
             'search_area_id' => '',
@@ -25,12 +34,23 @@ class RestaurantController extends Controller
             'search_keyword' => '',
         ];
         $request->session()->put($access_time, $search_condition);
+
+        // スクロール位置のリセット
         $position = 0;
+
+        // 飲食店情報の取得
         $restaurants = Restaurant::all();
+
+        // レビューの取得、計算
         foreach ($restaurants as $restaurant) {
+            // レビュー件数の取得
             $restaurant['review_total'] = Review::where('restaurant_id', $restaurant->id)->count();
+
+            // レビューが存在する場合
             if ($restaurant['review_total'] > 0) {
                 $reviews = Review::where('restaurant_id', $restaurant->id)->get();
+
+                // レビューの平均計算
                 $i = 0;
                 foreach ($reviews as $review) {
                     $i += $review->evaluation;
@@ -38,11 +58,14 @@ class RestaurantController extends Controller
                 $restaurant['review_average'] = number_format($i / $restaurant['review_total'], 1);
             }
         }
+
+        // エリア、ジャンルの取得
         $areas = Area::all();
         $genres = Genre::all();
+
+        // 飲食店一覧ページの表示
         return view('index', compact('restaurants', 'areas', 'genres', 'search_condition', 'position'));
     }
-    //飲食店一覧ページの表示
 
     /**
      * お気に入り追加
@@ -110,6 +133,12 @@ class RestaurantController extends Controller
         return view('detail', compact('restaurant', 'access_time', 'page_status', 'reviews', 'payments'));
     }
 
+    /**
+     * 検索
+     *
+     * @param Request $request リクエスト
+     * @return view index.blade
+     */
     public function search(Request $request)
     {
         $access_time = $request->access_time;
@@ -150,18 +179,43 @@ class RestaurantController extends Controller
         $genres = Genre::all();
         return view('index', compact('restaurants', 'areas', 'genres', 'search_condition', 'position'));
     }
-    //検索
 
+    /**
+     * マイページの表示
+     *
+     * @param Request $request リクエスト
+     * @return view mypage.blade
+     */
     public function mypage(Request $request)
     {
+        // 現在日時の取得
         $dt_now = Carbon::now();
-        $reservations = Reservation::where('user_id', Auth::id())->where([['date', '=', $dt_now->format("Y-m-d")], ['time', '>=', $dt_now->format("H:i")]])->orwhere('user_id', Auth::id())->where('date', '>', $dt_now->format("Y-m-d"))->orderBy('date', 'asc')->orderBy('time', 'asc')->get();
-        $reservations_history = Reservation::where('user_id', Auth::id())->where([['date', '=', $dt_now->format("Y-m-d")], ['time', '<', $dt_now->format("H:i")]])->orwhere('user_id', Auth::id())->where('date', '<', $dt_now->format("Y-m-d"))->orderBy('date', 'asc')->orderBy('time', 'asc')->get();
+
+        // 予約情報の取得
+        $reservations = Reservation::where('user_id', Auth::id())->where([['date', '=', $dt_now->format("Y-m-d")], ['time', '>=', $dt_now->format("H:i")]])
+            ->orwhere('user_id', Auth::id())->where('date', '>', $dt_now->format("Y-m-d"))
+            ->orderBy('date', 'asc')->orderBy('time', 'asc')
+            ->get();
+
+        // 過去の予約情報の取得
+        $reservations_history = Reservation::where('user_id', Auth::id())->where([['date', '=', $dt_now->format("Y-m-d")], ['time', '<', $dt_now->format("H:i")]])
+            ->orwhere('user_id', Auth::id())->where('date', '<', $dt_now->format("Y-m-d"))
+            ->orderBy('date', 'asc')->orderBy('time', 'asc')
+            ->get();
+
+        // お気に入り情報の取得
         $favorites = Favorite::where('user_id', Auth::id())->get();
+
+        // レビューの取得、計算
         foreach ($favorites as $favorite) {
+            // レビュー件数の取得
             $favorite['review_total'] = Review::where('restaurant_id', $favorite->restaurant_id)->count();
+
+            // レビューが存在する場合
             if ($favorite['review_total'] > 0) {
                 $reviews = Review::where('restaurant_id', $favorite->restaurant_id)->get();
+
+                // レビューの平均計算
                 $i = 0;
                 foreach ($reviews as $review) {
                     $i += $review->evaluation;
@@ -169,8 +223,11 @@ class RestaurantController extends Controller
                 $favorite['review_average'] = number_format($i / $favorite['review_total'], 1);
             }
         }
+
+        //画面遷移情報のセット
         $page_status = 'mypage';
+
+        // マイページ画面の表示
         return view('mypage', compact('reservations', 'reservations_history', 'favorites', 'page_status'));
     }
-    //マイページの表示
 }

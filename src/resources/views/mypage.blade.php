@@ -13,16 +13,22 @@
     <div class="reservation__content">
         @foreach($reservations as $reservation)
         <div class="reservation__card">
-            <!-- 予約削除フォーム -->
-            <form class="reservation__form-delete" action="/reservation/delete" method="post">
-                @csrf
-                @method('delete')
-                <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">
-                <input type="hidden" name="page_status" value="{{ $page_status }}">
-                <button class="reservation__delete-button"><i class="fa-regular fa-circle-xmark fa-xl" style="color: #ffffff;"></i></button>
-            </form>
-            <i class="fa-regular fa-clock fa-xl" style="color: #ffffff;"></i>
-            <h4>予約{{ $loop->iteration	}}</h4>
+            <div class="reservation__card-ttl">
+                <div class="card__ttl-left">
+                    <i class="fa-regular fa-clock fa-xl" style="color: #ffffff;"></i>
+                    <h4>予約{{ $loop->iteration	}}</h4>
+                </div>
+                <!-- 予約削除フォーム -->
+                <div class="card__ttl-right">
+                    <form class="reservation__form-delete" action="/reservation/delete" method="post">
+                        @csrf
+                        @method('delete')
+                        <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">
+                        <input type="hidden" name="page_status" value="{{ $page_status }}">
+                        <button class="reservation__delete-button"><i class="fa-regular fa-circle-xmark fa-xl" style="color: #ffffff;"></i></button>
+                    </form>
+                </div>
+            </div>
             <table class="reservation__table" id="reservation__table{{ $loop->iteration }}">
                 <tr class="reservation__row">
                     <th class="reservation__header">Shop</th>
@@ -46,9 +52,11 @@
                 </tr>
             </table>
             <!-- 予約変更画面への遷移ボタン -->
-            <a class="reservation-change__link" href="/reservation/change/?reservation_id={{ $reservation->id }}&page_status={{ $page_status }}">
-                <button class="reservation-change__link-button">変更</button>
-            </a>
+            <div class="reservation__link">
+                <a href="/reservation/change/?reservation_id={{ $reservation->id }}&page_status={{ $page_status }}">
+                    <button class="reservation__link-button">変更</button>
+                </a>
+            </div>
         </div>
         @endforeach
     </div>
@@ -57,8 +65,10 @@
     <div class="reservation-history__content">
         @foreach($reservations_history as $reservation)
         <div class="reservation__card">
-            <i class="fa-regular fa-clock fa-xl" style="color: #ffffff;"></i>
-            <h4>予約{{ $loop->iteration	}}</h4>
+            <div class="reservation-history__card-ttl">
+                <i class="fa-regular fa-clock fa-xl" style="color: #ffffff;"></i>
+                <h4>予約{{ $loop->iteration	}}</h4>
+            </div>
             <table class="reservation__table" id="reservation__table{{ $loop->iteration }}">
                 <tr class="reservation__row">
                     <th class="reservation__header">Shop</th>
@@ -81,9 +91,11 @@
                     <td class="reservation__description">{{ $reservation->payment->name }}</td>
                 </tr>
             </table>
-            <a class="review__link" href="/review/?restaurant_id={{ $reservation->restaurant->id }}">
-                <button class="review__link-button">レビュー</button>
-            </a>
+            <div class="reservation__link">
+                <a href="/review/?restaurant_id={{ $reservation->restaurant->id }}">
+                    <button class="reservation__link-button">レビュー</button>
+                </a>
+            </div>
         </div>
         @endforeach
     </div>

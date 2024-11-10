@@ -3,9 +3,8 @@ body {
 }
 
 .header__inner {
-    margin: 30px 0 0 0;
     padding: 0 0 0 30px;
-    height: 8vh;
+    height: 120px;
     display: flex;
     align-items: center;
 }
@@ -18,7 +17,7 @@ body {
 
 .auth__content {
     width: 400px;
-    margin: 20vh auto 0;
+    margin: 15vh auto 0;
     padding: 30px 0 0 0;
     border-radius: 5px;
     background-color: #ffffff;
@@ -27,8 +26,8 @@ body {
 
 .auth__message {
     margin: 0 auto 0;
-    width: 365px;
-    height: 90px;
+    width: 90%;
+    height: 70px;
     font-size: 15px;
     font-weight: bold;
 }
@@ -37,4 +36,10 @@ body {
     text-align: center;
     width: 100%;
     margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .auth__content {
+        width: 300px;
+    }
 }

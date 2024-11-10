@@ -108,7 +108,6 @@
 
                 <input class="restaurant__review-input" id="star1" name="evaluation" type="radio" value="1" disabled="disabled" @if( $review->evaluation==1 ) checked @endif>
                 <label class="restaurant__review-label" for="star1"><i class="fa-solid fa-star"></i></label>
-                {{ $review->evaluation }}
             </form>
             <p>{!! nl2br( $review->comment ) !!}</p>
         </div>

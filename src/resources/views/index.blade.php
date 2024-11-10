@@ -6,6 +6,7 @@
 @endsection
 
 @section('content')
+<!-- 検索フォーム -->
 <form class="restaurant__search-form" action="/search" method="get">
     @csrf
     <div class="search-form__item">
@@ -69,6 +70,7 @@
                 </a>
                 @if (Auth::check())
                 @if(!Auth::user()->isFavorite($restaurant->id))
+                <!-- お気に入り追加フォーム -->
                 <form class="favorite__form" id="favorite__form{{ $loop->iteration }}" action="/favorite/add" method="post">
                     @csrf
                     <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}" />
@@ -77,6 +79,7 @@
                     <button class="favorite__form-button" id="favorite__form-button{{ $loop->iteration }}"><i class="fa-solid fa-heart fa-2x" style="color: #eeeeee;"></i></button>
                 </form>
                 @else
+                <!-- お気に入り削除フォーム -->
                 <form class="favorite__form" id="favorite__form{{ $loop->iteration }}" action="/favorite/delete" method="post">
                     @csrf
                     <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}" />

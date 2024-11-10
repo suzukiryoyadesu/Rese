@@ -110,7 +110,9 @@
                 @if ($errors->any())
                 <p class="reservation__error-message">・{{$errors->first()}}</p>
                 @endif
-                <button class="reservation-form__change-button">変更</button>
+                <div class="reservation-form__button">
+                    <button class="reservation-form__button-submit">変更</button>
+                </div>
             </form>
         </div>
     </div>
