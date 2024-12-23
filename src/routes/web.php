@@ -9,6 +9,7 @@ use App\Http\Controllers\RestaurantInfoController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,9 @@ Route::get('/detail', [RestaurantController::class, 'detail']);
 Route::get('/search', [RestaurantController::class, 'search']);
 Route::get('/two-factor-auth', [AuthenticationController::class, 'twoFactorAuthView']);
 Route::post('/two-factor-auth', [AuthenticationController::class, 'twoFactorAuth']);
+
+Route::get('/pro/search', [ProController::class, 'searchSort']);
+Route::get('/pro/sort', [ProController::class, 'searchSort']);
 
 Route::middleware('auth')->group(
     function () {
@@ -55,6 +59,14 @@ Route::middleware(['auth', 'two.factor.auth'])->group(
         Route::get('/card/update', [CardController::class, 'cardUpdateView']);
         Route::post('/card/update', [CardController::class, 'cardUpdate']);
         Route::get('/done', [ReservationController::class, 'reservationDone']);
+
+        Route::get('/pro/review', [ProController::class, 'review']);
+        Route::post('/pro/review/post', [ProController::class, 'reviewPost']);
+        Route::post('/pro/favorite/add', [ProController::class, 'favoriteAdd']);
+        Route::post('/pro/favorite/delete', [ProController::class, 'favoriteDelete']);
+        Route::get('/pro/review/edit', [ProController::class, 'reviewEditView']);
+        Route::patch('/pro/review/edit', [ProController::class, 'reviewEdit']);
+        Route::delete('/pro/review/delete', [ProController::class, 'reviewDelete']);
     }
 );
 
@@ -64,6 +76,9 @@ Route::middleware(['auth', 'two.factor.auth', 'permission:admin'])->group(
         Route::post('/representative/register', [AdminController::class, 'representativeRegister']);
         Route::get('/notification', [AdminController::class, 'notificationView']);
         Route::post('/notification', [AdminController::class, 'notification']);
+
+        Route::get('/pro/csv', [ProController::class, 'Csv']);
+        Route::post('/pro/csv/import', [ProController::class, 'CsvImport']);
     }
 );
 

@@ -36,6 +36,7 @@
                         @can('admin')
                         <li class="hamburger__nav-item"><a href="/representative/register" class="hamburger__nav-link">Registration(Rep)</a></li>
                         <li class="hamburger__nav-item"><a href="/notification" class="hamburger__nav-link">Notification</a></li>
+                        <li class="hamburger__nav-item"><a href="/pro/csv" class="hamburger__nav-link">CSV(Restaurant)</a></li>
                         @endcan
                         @can('restaurant')
                         <li class="hamburger__nav-item"><a href="/restaurant/create" class="hamburger__nav-link">Create(Restaurant)</a></li>

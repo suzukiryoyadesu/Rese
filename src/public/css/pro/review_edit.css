@@ -1,0 +1,202 @@
+.restaurant__content {
+    position: relative;
+    padding: 0 0 0 60px;
+    width: 40vw;
+}
+
+.restaurant__content::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -50px;
+    width: 2px;
+    height: 100%;
+    background-color: #cccccc;
+}
+
+.restaurant__card {
+    width: 275px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 3px #a2a2a2;
+}
+
+.restaurant__img {
+    width: 100%;
+}
+
+.restaurant__img img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.restaurant__text {
+    padding: 20px;
+}
+
+.restaurant__text h2 {
+    margin: 5px 0 5px;
+}
+
+.restaurant__tag {
+    margin: 5px 0 5px;
+}
+
+.restaurant__option {
+    margin: 5px 0 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.restaurant__option-link button {
+    padding: 5px 10px 5px;
+    border: none;
+    border-radius: 5px;
+    background: #3560F6;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.favorite__form-button {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    appearance: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.review__form {
+    position: absolute;
+    right: 60px;
+    top: 70px;
+    width: 40vw;
+}
+
+.review__form h2 {
+    font-weight: normal;
+}
+
+.review-form__evaluating {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.review-form__evaluating-input {
+    display: none;
+}
+
+.review-form__evaluating-label {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 0 8px;
+    transition: color 0.3s;
+}
+
+.review-form__evaluating-label:hover,
+.review-form__evaluating-label:hover~.review-form__evaluating-label,
+.review-form__evaluating-input:checked~.review-form__evaluating-label {
+    /* 「~」でホバー時を動的に、チェック時にそれ以下の数字をもつスターの色も変化 */
+    color: #3560F6;
+}
+
+.review__form textarea {
+    field-sizing: content;
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+    height: 100px;
+}
+
+.review__form-submit {
+    text-align: center;
+}
+
+.review-form__button {
+    width: 40vw;
+    height: 30px;
+    margin: 120px 0 0 0;
+    padding: 0 30px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.review-form__evaluating-input-display {
+    display: none;
+}
+
+.review-form__evaluating-label-display {
+    color: #cccccc;
+    font-size: 24px;
+    padding: 0 8px;
+}
+
+#drop__zone {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+#drop__zone p {
+    text-align: center;
+    padding: 30px 0 0 0;
+}
+
+#drop__zone img {
+    height: 100%;
+}
+
+#drop__zone input {
+    display: none;
+}
+
+.form__error {
+    color: #ff0000;
+    font-size: 16px;
+}
+
+#text__length {
+    text-align: right;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .review__content {
+        padding: 0 30px 0 30px;
+        width: 100%;
+    }
+
+    .restaurant__content {
+        position: static;
+        padding: 0;
+        width: 100%;
+    }
+
+    .restaurant__content::after {
+        display: none;
+    }
+
+    .restaurant__card {
+        margin: 0 auto 0;
+    }
+
+    .review__form {
+        position: static;
+        width: 100%;
+    }
+
+    .review-form__button {
+        width: 100%;
+        margin: 30px 0 0 0;
+    }
+}

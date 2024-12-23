@@ -18,7 +18,8 @@ class CreateReviewsTable extends Migration
             $table->foreignId('restaurant_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->integer('evaluation');
-            $table->string('comment');
+            $table->string('comment', 400);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

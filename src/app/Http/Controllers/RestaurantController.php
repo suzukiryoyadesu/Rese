@@ -26,6 +26,9 @@ class RestaurantController extends Controller
         // セッションキーのセット
         $access_time = Carbon::now()->format('Y/m/d  H:i:s.v');
 
+        // ソートIDのセット
+        $sort_id = '';
+
         // 検索条件のリセット
         $search_condition = [
             'access_time' => $access_time,
@@ -64,7 +67,7 @@ class RestaurantController extends Controller
         $genres = Genre::all();
 
         // 飲食店一覧ページの表示
-        return view('index', compact('restaurants', 'areas', 'genres', 'search_condition', 'position'));
+        return view('pro.index', compact('restaurants', 'areas', 'genres', 'search_condition', 'position', 'sort_id'));
     }
 
     /**
@@ -85,7 +88,7 @@ class RestaurantController extends Controller
 
         $request->session()->put('access_time', $request->access_time);
         $request->session()->put('position', $request->position);
-        return redirect('/search');
+        return redirect('/pro/search');
     }
 
     /**
@@ -111,7 +114,7 @@ class RestaurantController extends Controller
 
         $request->session()->put('access_time', $request->access_time);
         $request->session()->put('position', $request->position);
-        return redirect('/search');
+        return redirect('/pro/search');
     }
 
     /**
@@ -130,7 +133,7 @@ class RestaurantController extends Controller
         $payments = Payment::all();
 
         // 飲食店詳細画面の表示
-        return view('detail', compact('restaurant', 'access_time', 'page_status', 'reviews', 'payments'));
+        return view('pro.detail', compact('restaurant', 'access_time', 'page_status', 'reviews', 'payments'));
     }
 
     /**
@@ -177,7 +180,7 @@ class RestaurantController extends Controller
         }
         $areas = Area::all();
         $genres = Genre::all();
-        return view('index', compact('restaurants', 'areas', 'genres', 'search_condition', 'position'));
+        return view('pro.index', compact('restaurants', 'areas', 'genres', 'search_condition', 'position'));
     }
 
     /**

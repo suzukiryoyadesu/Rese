@@ -1,0 +1,239 @@
+.restaurant__form {
+    position: relative;
+}
+
+.sort-form__item {
+    width: 120px;
+    position: absolute;
+    right: 560px;
+    bottom: 40px;
+}
+
+.sort__form-select {
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    padding: 3px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0.5px #a2a2a2;
+    background-color: #ffffff;
+    appearance: none;
+    text-align: center;
+}
+
+.search-form__item {
+    width: 500px;
+    display: flex;
+    position: absolute;
+    right: 30px;
+    bottom: 40px;
+}
+
+.search-form__select-left {
+    width: 100px;
+    height: 40px;
+    margin: 0;
+    padding: 3px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 5px 0 0 5px;
+    box-shadow: 2px 2px 0.5px #a2a2a2;
+    background-color: #ffffff;
+}
+
+.search-form__select-middle {
+    width: 100px;
+    height: 40px;
+    margin: 0;
+    padding: 3px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 0.5px #a2a2a2;
+    background-color: #ffffff;
+}
+
+.search-form__item i {
+    position: relative;
+}
+
+.search-form__item i::before {
+    position: absolute;
+    left: -4px;
+    bottom: 50%;
+    transform: translate(50%, 50%);
+}
+
+.search-form__input-right {
+    width: 300px;
+    height: 40px;
+    margin: 0;
+    padding: 3px 3px 3px 30px;
+    font-size: 12px;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 0 5px 5px 0 ;
+    box-shadow: 2px 2px 0.5px #a2a2a2;
+    background-color: #ffffff;
+}
+
+.restaurant__content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.restaurant__card {
+    width: 300px;
+    margin: 30px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 3px #a2a2a2;
+}
+
+.restaurant__img {
+    width: 100%;
+}
+
+.restaurant__img img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.restaurant__text {
+    padding: 20px;
+}
+
+.restaurant__text h2 {
+    margin: 5px 0 5px;
+}
+
+.restaurant__tag {
+    margin: 5px 0 5px;
+}
+
+.restaurant__option {
+    margin: 5px 0 5px;
+    display:flex;
+    justify-content: space-between;
+}
+
+.restaurant__option-link button {
+    padding: 5px 10px 5px;
+    border: none;
+    border-radius: 5px;
+    background: #3560F6;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.favorite__form-button {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    appearance: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.restaurant__review {
+    align-items: center;
+    display: flex;
+    height: 24px;
+    margin: 5px 0 5px 0;
+}
+
+.restaurant__review-evaluation {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.restaurant__review-input {
+    display: none;
+}
+
+.restaurant__review-label {
+    color: #cccccc;
+    font-size: 15px;
+    padding: 0 3px;
+}
+
+.restaurant__review-input:checked~.restaurant__review-label {
+    color: #feb908;
+}
+
+.restaurant__review-item {
+    height: 24px;
+    margin: 5px 0 5px 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .restaurant__form {
+        margin: 0 0 40px 0;
+    }
+
+    .sort-form__item {
+        right: 10vw;
+        bottom: -40px;
+    }
+
+    .sort__form-select {
+        height: 30px;
+        font-size: 9px;
+    }
+
+    .search-form__item {
+        width: 80vw;
+        position: static;
+        margin: 0 auto 0;
+    }
+
+    .search-form__select-left {
+        width: 25%;
+        height: 30px;
+        font-size: 9px;
+    }
+
+    .search-form__select-middle {
+        width: 25%;
+        height: 30px;
+        font-size: 9px;
+    }
+
+    .search-form__item i::before {
+        font-size: 16px;
+    }
+
+    .search-form__input-right {
+        width: 50%;
+        height: 30px;
+        padding: 3px 3px 3px 25px;
+        font-size: 9px;
+    }
+
+    .restaurant__content {
+        padding: 0 10px 0 10px;
+        justify-content: center;
+    }
+
+    .restaurant__card {
+        width: 250px;
+        margin: 20px;
+    }
+
+    .restaurant__content:after {
+        content:'';
+        width: 250px;
+        margin: 20px;
+    }
+}
