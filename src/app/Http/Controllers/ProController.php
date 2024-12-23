@@ -54,14 +54,16 @@ class ProController extends Controller
         $page_status = $request->page_status;
         $restaurant = Restaurant::find($restaurant_id);
 
+        // 画面遷移情報の取得
         $review_status = $request->review_status;
 
         // 口コミ画面からの遷移の場合
         if ($review_status == 'post') {
+            // 口コミ画面の表示
             return view('pro.review', compact('restaurant', 'access_time', 'page_status'));
         }
 
-        // 口コミ画面からの遷移の場合
+        // 口コミ編集画面からの遷移の場合
         if ($review_status == 'edit') {
             // 口コミの取得
             $review = Review::where([
@@ -78,6 +80,7 @@ class ProController extends Controller
                 return view('pro.review_edit_done', compact('access_time', 'page_status', 'restaurant_id', 'message'));
             }
 
+            // 口コミ編集画面の表示
             return view('pro.review_edit', compact('restaurant', 'access_time', 'page_status', 'review'));
         }
     }
@@ -104,14 +107,16 @@ class ProController extends Controller
         $page_status = $request->page_status;
         $restaurant = Restaurant::find($restaurant_id);
 
+         // 画面遷移情報の取得
         $review_status = $request->review_status;
 
         // 口コミ画面からの遷移の場合
         if ($review_status == 'post') {
+            // 口コミ画面の表示
             return view('pro.review', compact('restaurant', 'access_time', 'page_status'));
         }
 
-        // 口コミ画面からの遷移の場合
+        // 口コミ編集画面からの遷移の場合
         if ($review_status == 'edit') {
             // 口コミの取得
             $review = Review::where([
@@ -128,6 +133,7 @@ class ProController extends Controller
                 return view('pro.review_edit_done', compact('access_time', 'page_status', 'restaurant_id', 'message'));
             }
 
+            // 口コミ編集画面の表示
             return view('pro.review_edit', compact('restaurant', 'access_time', 'page_status', 'review'));
         }
     }
@@ -145,7 +151,7 @@ class ProController extends Controller
         $page_status = $request->page_status;
         $restaurant_id = $request->restaurant_id;
 
-        // レビューの取得
+        // 口コミの取得
         $review = Review::where([
             ['user_id', '=', Auth::id()],
             ['restaurant_id', '=', $restaurant_id]
@@ -164,12 +170,16 @@ class ProController extends Controller
                 $image_path = $image->store('public/images/');
                 $review_array = $request->only(['user_id', 'restaurant_id', 'evaluation', 'comment']);
                 $review_array['image'] = 'storage/images/' . basename($image_path);
+
+                // 口コミ作成
                 Review::create($review_array);
             }
 
             // 画像ファイルが送信されなかった場合
             if (empty($image)) {
                 $review_array = $request->only(['user_id', 'restaurant_id', 'evaluation', 'comment']);
+
+                // 口コミ作成
                 Review::create($review_array);
             }
 
@@ -185,7 +195,7 @@ class ProController extends Controller
      * 口コミ編集ページの表示
      *
      * @param Request $request リクエスト
-     * @return view review.blade
+     * @return view review_edit.blade
      */
     public function reviewEditView(Request $request)
     {
@@ -202,6 +212,7 @@ class ProController extends Controller
 
         // 口コミが存在しない場合
         if ($review == null) {
+            // 口コミ編集完了画面の表示
             return view('pro.review_edit_done', compact('access_time', 'page_status', 'restaurant_id', 'message'));
         }
 
@@ -242,12 +253,16 @@ class ProController extends Controller
                 $image_path = $image->store('public/images/');
                 $review_array = $request->only(['user_id', 'restaurant_id', 'evaluation', 'comment']);
                 $review_array['image'] = 'storage/images/' . basename($image_path);
+
+                // 口コミ編集
                 $review->update($review_array);
             }
 
             // 画像ファイルが送信されなかった場合
             if (empty($image)) {
                 $review_array = $request->only(['user_id', 'restaurant_id', 'evaluation', 'comment']);
+
+                // 口コミ編集
                 $review->update($review_array);
             }
 
@@ -288,6 +303,8 @@ class ProController extends Controller
             // ユーザーが管理者の場合
             if ($user->role_id == 3) {
                 Storage::disk('public')->delete('images/' . basename($review->image));
+
+                // 口コミ削除
                 $review->delete();
 
                 // メッセージのセット
@@ -296,8 +313,11 @@ class ProController extends Controller
 
             // ユーザーが管理者以外の場合
             if ($user->role_id != 3) {
+                // ユーザーが投稿した口コミである場合
                 if ($user->id == $review->user_id) {
                     Storage::disk('public')->delete('images/' . basename($review->image));
+
+                    // 口コミ削除
                     $review->delete();
 
                     // メッセージのセット
@@ -318,13 +338,17 @@ class ProController extends Controller
      */
     public function searchSort(Request $request)
     {
+        // セッションキー、スクロール位置の取得
         $access_time = $request->access_time;
         $position = $request->session()->pull('position', 0);
 
+
+        // セッションキーが存在しない場合
         if (empty($access_time)) {
             $access_time = $request->session()->pull('access_time', Carbon::now()->format('Y/m/d  H:i:s.v'));
         }
 
+        // 処理チェック
         if ($request->status === "search") {
             $search_condition = [
                 'access_time' => $access_time,
@@ -358,16 +382,16 @@ class ProController extends Controller
         // 飲食店情報の取得
         $restaurants = Restaurant::AreaSearch($search_condition['search_area_id'])->GenreSearch($search_condition['search_genre_id'])->KeywordSearch($search_condition['search_keyword'])->get();
 
-        // レビューの取得、計算
+        // 口コミの取得、計算
         foreach ($restaurants as $restaurant) {
-            // レビュー件数の取得
+            // 口コミ件数の取得
             $restaurant['review_total'] = Review::where('restaurant_id', $restaurant->id)->count();
 
-            // レビューが存在する場合
+            // 口コミが存在する場合
             if ($restaurant['review_total'] > 0) {
                 $reviews = Review::where('restaurant_id', $restaurant->id)->get();
 
-                // レビューの平均計算
+                // 口コミ口コミの平均計算
                 $i = 0;
                 foreach ($reviews as $review) {
                     $i += $review->evaluation;
@@ -376,14 +400,17 @@ class ProController extends Controller
             }
         }
 
+        // ランダムの場合
         if ($sort_id == 1) {
             $restaurants = $restaurants->shuffle();
         }
 
+        // 評価の高い順の場合
         if ($sort_id == 2) {
             $restaurants = $restaurants->sortByDesc('review_average');
         }
 
+        // 評価の低い順の場合
         if ($sort_id == 3) {
             $restaurants_review = $restaurants->where('review_average', '>', 0)->sortBy('review_average');
             $restaurants_review_no = $restaurants->where('review_average', '=', null);
@@ -394,6 +421,7 @@ class ProController extends Controller
         $areas = Area::all();
         $genres = Genre::all();
 
+        // 飲食店一覧画面の表示
         return view('pro.index', compact('restaurants', 'areas', 'genres', 'search_condition', 'position', 'sort_id'));
     }
 
@@ -404,7 +432,7 @@ class ProController extends Controller
      */
     public function Csv()
     {
-        // CSVインポートの表示
+        // CSVインポート画面の表示
         return view('pro.csv');
     }
 
@@ -412,13 +440,30 @@ class ProController extends Controller
      * CSVインポート
      *
      * @param Request $request リクエスト
-     * @return view csv.blade
+     * @return view csv_done.blade
      */
     public function CsvImport(Request $request)
     {
+        // メッセージのセット
         $message = '店舗情報を作成できませんでした';
 
+        // ファイルが送信された場合
         if ($request->hasFile('csv')) {
+            // バリデーションルール、メッセージの作成
+            $rules = [
+                'csv' => 'file|mimes:csv',
+            ];
+            $messages = [
+                'csv.file' => 'ファイルを選択してください',
+                'csv.mimes' => 'ファイル(.csv)を選択してください',
+            ];
+            $validator = Validator::make($request->all(), $rules, $messages);
+
+            // バリデーションエラーの場合
+            if ($validator->fails()) {
+                return redirect('/pro/csv')->withErrors($validator)->withInput();
+            }
+
             // リクエストからファイルを取得
             $file = $request->file('csv');
             $path = $file->getRealPath();
@@ -431,7 +476,7 @@ class ProController extends Controller
 
             $i = 2;
 
-            // 1行ずつ読み込む
+            // 1行ずつ読み込みバリデーションチェック
             while (($csv_data = fgetcsv($fp)) !== FALSE) {
                 $restaurant_array = [
                     'area_id' => $csv_data[0],
@@ -482,7 +527,7 @@ class ProController extends Controller
             // ヘッダー行をスキップ
             fgetcsv($fp);
 
-            // 1行ずつ読み込む
+            // 1行ずつ読み込み店舗情報を作成
             while (($csv_data = fgetcsv($fp)) !== FALSE) {
                 $restaurant_array = [
                     'area_id' => $csv_data[0],
@@ -494,9 +539,12 @@ class ProController extends Controller
                 Restaurant::create($restaurant_array);
                 $message = '店舗情報を作成しました';
             }
+
             // ファイルを閉じる
             fclose($fp);
         }
+
+        // csvインポート完了画面の表示
         return view('pro.csv_done', compact('message'));
     }
 }
