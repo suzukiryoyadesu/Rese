@@ -139,7 +139,7 @@ class ProController extends Controller
     }
 
     /**
-     * レビュー投稿
+     * 口コミ投稿
      *
      * @param ReviewRequest $request リクエスト
      * @return view review_done.blade
@@ -275,7 +275,7 @@ class ProController extends Controller
     }
 
     /**
-     * レビュー削除
+     * 口コミ削除
      *
      * @param Request $request リクエスト
      * @return view review_delete_done.blade
@@ -447,23 +447,24 @@ class ProController extends Controller
         // メッセージのセット
         $message = '店舗情報を作成できませんでした';
 
+        // バリデーションルール、メッセージの作成
+        $rules = [
+            'csv' => 'required|file|mimes:csv,txt',
+        ];
+        $messages = [
+            'csv.required' => 'ファイルを必ず選択してください',
+            'csv.file' => 'ファイルを選択してください',
+            'csv.mimes' => 'CSVファイルを選択してください',
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        // バリデーションエラーの場合
+        if ($validator->fails()) {
+            return redirect('/pro/csv')->withErrors($validator)->withInput();
+        }
+
         // ファイルが送信された場合
         if ($request->hasFile('csv')) {
-            // バリデーションルール、メッセージの作成
-            $rules = [
-                'csv' => 'file|mimes:csv',
-            ];
-            $messages = [
-                'csv.file' => 'ファイルを選択してください',
-                'csv.mimes' => 'ファイル(.csv)を選択してください',
-            ];
-            $validator = Validator::make($request->all(), $rules, $messages);
-
-            // バリデーションエラーの場合
-            if ($validator->fails()) {
-                return redirect('/pro/csv')->withErrors($validator)->withInput();
-            }
-
             // リクエストからファイルを取得
             $file = $request->file('csv');
             $path = $file->getRealPath();
